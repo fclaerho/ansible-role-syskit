@@ -1,0 +1,24 @@
+---
+
+- name: Ferm module directory is present
+  file:
+    path: /etc/ferm.d
+    state: directory
+    owner: root
+    group: adm
+    mode: "750"
+
+- name: Ferm default module is present
+  shell: if test ! -e /etc/ferm.d/default; then mv /etc/ferm/ferm.conf /etc/ferm.d/default; fi
+  notify: syskit_reload_ferm
+
+- name: Ferm is configured
+  copy:
+    content: "@include '/etc/ferm.d/';"
+    dest: /etc/ferm/ferm.conf
+    owner: root
+    group: adm
+  notify: syskit_reload_ferm
+
+#- command: find /var/cache/ferm -mindepth 1 -delete
+#  name: clear ferm cache

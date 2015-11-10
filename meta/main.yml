@@ -1,0 +1,12 @@
+---
+dependencies: []
+galaxy_info:
+  author: "Florent Claerhout <code@fclaerhout.fr>"
+  description: "System integration Kit: Configure users, firewall, web proxies, logs, etc."
+  license: MIT
+  min_ansible_version: 1.8.4
+  platforms: []
+version: 0.0.1
+prefix: syskit_
+variables: {}
+include_when: {}

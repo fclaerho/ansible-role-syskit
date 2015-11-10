@@ -1,0 +1,7 @@
+---
+- include: ferm.yml
+  name: ferm.yml is included
+  when: true
+- include: logrotate.yml
+  name: logrotate.yml is included
+  when: true

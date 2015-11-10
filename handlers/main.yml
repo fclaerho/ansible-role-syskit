@@ -1,0 +1,4 @@
+---
+
+- name: syskit_reload_ferm
+  command: ferm /etc/ferm/ferm.conf
