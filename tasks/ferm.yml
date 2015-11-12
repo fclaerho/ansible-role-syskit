@@ -36,3 +36,4 @@
     group: adm
     mode: "644"
   with_items: debkit_ferm_modules
+  notify: syskit_reload_ferm
