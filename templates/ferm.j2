@@ -2,9 +2,9 @@
 table filter {
 	chain INPUT {
 		mod conntrack ctstate NEW ACCEPT {
-			{{ "daddr " + item.daddr if 'daddr' in item and item.daddr }}
-			{{ "proto " + item.proto if 'proto' in item and item.proto }}
-			{{ "dport " + item.dport|string if 'dport' in item and item.dport }};
+			{{ "daddr " + item.daddr if 'daddr' in item and item.daddr else ''}}
+			{{ "proto " + item.proto if 'proto' in item and item.proto else ''}}
+			{{ "dport " + item.dport|string if 'dport' in item and item.dport else ''}};
 		}
 	}
 }
