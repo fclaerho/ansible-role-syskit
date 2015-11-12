@@ -1,4 +1,9 @@
 ---
 
+# NOTE!
+# Restarting the ferm service is not sufficient
+# service: name=ferm state=restarted
+# If you want to do it, flush its cache first /var/cache/ferm/* with:
+# command: find /var/cache/ferm -mindepth 1 -delete
 - name: syskit_reload_ferm
   command: ferm /etc/ferm/ferm.conf
