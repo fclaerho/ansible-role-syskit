@@ -4,7 +4,7 @@ galaxy_info:
   author: Florent Claerhout <code@fclaerhout.fr>
   description: >
     System Integration Kit.
-    Configure users, groups, firewall, proxies, logs, etc. for services and tools.
+    Finish integrating services and tools by configuring users, firewall, proxies, logs, etc.
   license: MIT
   min_ansible_version: 1.8.4
   platforms:

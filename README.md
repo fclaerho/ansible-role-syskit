@@ -1,7 +1,7 @@
 
 <!-- THIS IS A GENERATED FILE, DO NOT EDIT -->
 
-System Integration Kit. Configure users, groups, firewall, proxies, logs, etc. for services and tools.
+System Integration Kit. Finish integrating services and tools by configuring users, firewall, proxies, logs, etc.
  Version 0.1.
 
 
