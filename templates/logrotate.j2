@@ -1,0 +1,8 @@
+# keep {{ size }} of logs, delete otherwise
+
+{{ path }} {
+	missingok
+	copytruncate
+	size {{ size }}
+	rotate 0
+}
