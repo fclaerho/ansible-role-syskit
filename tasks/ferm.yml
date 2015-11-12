@@ -27,3 +27,12 @@
     group: adm
     mode: "644"
   notify: syskit_reload_ferm
+
+- name: Ferm modules are present
+  template:
+    src: ferm.j2
+    dest: /etc/ferm.d/{{ item.name }}
+    owner: root
+    group: adm
+    mode: "644"
+  with_items: debkit_ferm_modules
