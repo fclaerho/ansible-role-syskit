@@ -2,7 +2,7 @@
 # - keep {{ item.size }} of logs
 # - {{ "delete otherwise" if not item.rotate else "archive " + item.rotate + " files" }}.
 
-{{ path }} {
+{{ item.path }} {
 	missingok
 	copytruncate
 	size {{ item.size }}
