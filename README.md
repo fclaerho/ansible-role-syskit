@@ -1,7 +1,7 @@
 
 <!-- THIS IS A GENERATED FILE, DO NOT EDIT -->
 
-Version 0.1. Debian system integration Kit. Configure users, groups, firewall, proxies, logs, etc.
+Version 0.1 / Debian system integration Kit. Configure users, groups, firewall, proxies, logs, etc.
 
 
 
