@@ -32,7 +32,7 @@ please refer to the Ansible documentation at https://docs.ansible.com/playbooks_
 Configurable features:
   * Logrotate
   * Users
-  * [Ferm](), Debian default firewall abstraction
+  * [Ferm](http://ferm.foo-projects.org), Debian default firewall abstraction
 
 
 ## Maintenance
