@@ -23,8 +23,8 @@
     content: "{{ item.1.keyval }}"
     dest: "{{ item.0.home }}/.ssh/{{ item.1.filename }}"
     owner: "{{ item.0.name }}"
-    #group: "{{ item.0.name }}"
-    #mode: "0600"
+    group: "{{ item.0.name }}"
+    mode: "600"
   with_subelements:
   - debkit_users
   - sshkeys
@@ -34,8 +34,8 @@
     content: "{{ item.1.pubval }}"
     dest: "{{ item.0.home }}/.ssh/{{ item.1.filename }}.pub"
     owner: jenkins
-    #group: jenkins
-    #mode: "644"
+    group: jenkins
+    mode: "644"
   with_subelements:
   - debkit_users
   - sshkeys
