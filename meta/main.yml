@@ -28,6 +28,6 @@ include_when:
   ferm.yml: syskit_ferm_modules
 usage_complement: >
   Configurable features:
-    * Logrotate
-    * Users
-    * [Ferm](http://ferm.foo-projects.org), Debian default firewall abstraction
+    * Firewalling: [Ferm](http://ferm.foo-projects.org)
+    * Users: create/delete accounts, install SSH keys
+    * Logs: logrotate to manage log

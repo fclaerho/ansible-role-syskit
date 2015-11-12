@@ -30,9 +30,10 @@ For further details,
 please refer to the Ansible documentation at https://docs.ansible.com/playbooks_roles.html.
 
 Configurable features:
-  * Logrotate
-  * Users
-  * [Ferm](http://ferm.foo-projects.org), Debian default firewall abstraction
+  * Firewalling: [Ferm](http://ferm.foo-projects.org)
+  * Users: create/delete accounts, install SSH keys
+  * Logs: logrotate to manage log
+
 
 
 ## Maintenance
