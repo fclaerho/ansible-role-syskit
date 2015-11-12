@@ -1,10 +1,8 @@
 
 <!-- THIS IS A GENERATED FILE, DO NOT EDIT -->
 
-Debian system integration Kit. Configure users, groups, firewall, proxies, logs, etc.
+Version 0.1. Debian system integration Kit. Configure users, groups, firewall, proxies, logs, etc.
 
-
-* * *
 
 
 ## Supported Platforms
@@ -16,8 +14,7 @@ Debian system integration Kit. Configure users, groups, firewall, proxies, logs,
 
 | Name | Value | Description |
 |------|-------|-------------|
-| debkit_users |   | List of dict {'name', 'home', 'groups', 'state', 'sshkeys'} Where sshkeys is itself a list of dict {'keyval', 'pubval', 'filename'}
- |
+| debkit_users |   | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'keyval', 'pubval', 'filename'}…} |
 
 
 

@@ -17,7 +17,5 @@ galaxy_info:
 version: 0.1
 prefix: debkit_
 variables:
-  debkit_users: >
-    List of dict {'name', 'home', 'groups', 'state', 'sshkeys'}
-    Where sshkeys is itself a list of dict {'keyval', 'pubval', 'filename'}
+  debkit_users: "List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'keyval', 'pubval', 'filename'}…}"
 include_when: {}
