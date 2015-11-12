@@ -1,8 +1,7 @@
 
 <!-- THIS IS A GENERATED FILE, DO NOT EDIT -->
 
-System Integration Kit.
-Configure users, groups, firewall, proxies, logs, etc. for services and tools.
+System Integration Kit. Configure users, groups, firewall, proxies, logs, etc. for services and tools.
  Version 0.1.
 
 
@@ -15,7 +14,7 @@ Configure users, groups, firewall, proxies, logs, etc. for services and tools.
 
 | Name | Value | Description |
 |------|-------|-------------|
-| debkit_ferm_modules | _(default:)_ [] | List of dict {'name', 'daddr', 'proto', 'dport'} |
+| debkit_ferm_modules | _(default:)_ [] | List of dict {'name', ['daddr'], ['proto'], ['dport']} |
 | debkit_logrotate_modules | _(default:)_ [] | List of dict {'name', 'path', 'size', 'rotate'} |
 | debkit_users | _(default:)_ [] | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…} |
 
