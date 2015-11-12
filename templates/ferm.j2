@@ -4,7 +4,7 @@ table filter {
 		mod conntrack ctstate NEW ACCEPT {
 			{{ "daddr " + item.daddr if item.daddr }}
 			{{ "proto " + item.proto if item.proto }}
-			{{ "dport " + item.dport if item.dport }};
+			{{ "dport " + item.dport|string if item.dport }};
 		}
 	}
 }
