@@ -4,7 +4,8 @@ galaxy_info:
   author: Florent Claerhout <code@fclaerhout.fr>
   description: >
     System Integration Kit.
-    Finish integrating services and tools by configuring users, firewall, proxies, logs, etc.
+    Finish integrating services and tools by configuring system specific concerns
+    such as users, firewall, proxies, logs, etc.
   license: MIT
   min_ansible_version: 1.8.4
   platforms:
@@ -24,3 +25,8 @@ include_when:
   logrotate.yml: debkit_logrotate_modules
   users.yml: debkit_users
   ferm.yml: debkit_ferm_modules
+usage_complement: >
+  Available system concerns:
+    * Logrotate
+    * Users
+    * [Ferm](), Debian default firewall abstraction
