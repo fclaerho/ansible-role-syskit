@@ -1,2 +1,4 @@
 ---
 debkit_users: []
+debkit_ferm_modules: []
+debkit_logrotate_modules: []

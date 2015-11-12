@@ -1,1 +1,9 @@
 ---
+
+- name: Logrotate module directory is present
+  file:
+    path: /etc/logrotate.d
+    state: directory
+    owner: root
+    group: root
+    mode: "755"
