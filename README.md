@@ -14,7 +14,7 @@ Debian system integration kit. Configure users, groups, firewall, proxies, logs,
 
 | Name | Value | Description |
 |------|-------|-------------|
-| debkit_users |   | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'keyval', 'pubval', 'filename'}…} |
+| debkit_users | _(default:)_ [] | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'keyval', 'pubval', 'filename'}…} |
 
 
 
