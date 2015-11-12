@@ -1,19 +1,24 @@
 
 <!-- THIS IS A GENERATED FILE, DO NOT EDIT -->
 
-System integration Kit: Configure users, firewall, web proxies, logs, etc.
+Debian system integration Kit. Configure users, groups, firewall, proxies, logs, etc.
+
 
 * * *
 
 
 ## Supported Platforms
 
-No supported platform specified (yet.)
-
+  * Ubuntu
+  * Debian
 
 ## Variables
 
-No variable.
+| Name | Value | Description |
+|------|-------|-------------|
+| debkit_users |   | List of dict {'name', 'home', 'groups', 'state', 'sshkeys'} Where sshkeys is itself a list of dict {'keyval', 'pubval', 'filename'}
+ |
+
 
 
 ## Usage
@@ -26,11 +31,15 @@ For further details,
 please refer to the Ansible documentation at https://docs.ansible.com/playbooks_roles.html.
 
 
+
+
 ## Maintenance
 
 Install [ansible-universe](https://github.com/fclaerho/ansible-universe)
 and run `ansible-universe check` to re-generate this distribution.
 
-The following files are generated or updated based on the role manifest `meta/main.yml`:
+The following files are generated or updated based on various role assets:
   * tasks/main.yml
   * README.md
+
+

@@ -1,0 +1,40 @@
+---
+
+- name: Managed users are present/absent
+  user:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+    groups: "{{ item.groups|join(',') }}"
+  with_items: debkit_users
+
+- name: Managed users .ssh/ directory is present
+  file:
+    name: "/home/{{ item.name }}/.ssh"
+    state: directory
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: "700"
+  when: item.state == "present" and item.sshkeys
+  with_items: debkit_users
+
+- name: Managed users private keys are present
+  copy:
+    content: "{{ item.1.keyval }}"
+    dest: "/home/{{ item.0.name }}/.ssh/{{ item.1.filename }}"
+    owner: "{{ item.0.name }}"
+    group: "{{ item.0.name }}"
+    mode: "0600"
+  with_subelements:
+  - debkit_users
+  - sshkeys
+
+- name: Managed users public keys are present
+  copy:
+    content: "{{ item.1.pubval }}"
+    dest: "/home/{{ item.0.name }}/.ssh/{{ item.1.filename }}.pub"
+    owner: jenkins
+    group: jenkins
+    mode: "644"
+  with_subelements:
+  - debkit_users
+  - sshkeys

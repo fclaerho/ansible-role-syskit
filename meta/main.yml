@@ -1,12 +1,23 @@
 ---
 dependencies: []
 galaxy_info:
-  author: "Florent Claerhout <code@fclaerhout.fr>"
-  description: "System integration Kit: Configure users, firewall, web proxies, logs, etc."
+  author: Florent Claerhout <code@fclaerhout.fr>
+  description: >
+    Debian system integration Kit.
+    Configure users, groups, firewall, proxies, logs, etc.
   license: MIT
   min_ansible_version: 1.8.4
-  platforms: []
-version: 0.0.1
-prefix: syskit_
-variables: {}
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+version: 0.1
+prefix: debkit_
+variables:
+  debkit_users: >
+    List of dict {'name', 'home', 'groups', 'state', 'sshkeys'}
+    Where sshkeys is itself a list of dict {'keyval', 'pubval', 'filename'}
 include_when: {}
