@@ -8,8 +8,14 @@
     group: adm
     mode: "750"
 
+- name: Assess ferm default module
+  stat:
+    path: /etc/ferm.d/default
+  register: ferm_default
+
 - name: Ferm default module is present
-  shell: if test ! -e /etc/ferm.d/default; then mv /etc/ferm/ferm.conf /etc/ferm.d/default; fi
+  command: mv /etc/ferm/ferm.conf /etc/ferm.d/default
+  when: not ferm_default.stat.exists
   notify: syskit_reload_ferm
 
 - name: Ferm is configured
