@@ -2,8 +2,7 @@
 <!-- THIS IS A GENERATED FILE, DO NOT EDIT -->
 
 Debian system integration kit. Configure users, groups, firewall, proxies, logs, etc. for services and tools.
-
-Version 0.1.
+ / Version 0.1.
 
 
 ## Supported Platforms
