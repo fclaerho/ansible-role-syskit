@@ -17,7 +17,7 @@ galaxy_info:
 version: 0.1
 prefix: debkit_
 variables:
-  debkit_logrotate_modules: "List of dict {}"
+  debkit_logrotate_modules: "List of dict {'name', 'path', 'size', 'rotate'}"
   debkit_ferm_modules: "List of dict {}"
   debkit_users: "List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…}"
 include_when:
