@@ -18,6 +18,7 @@
     dest: /etc/ferm/ferm.conf
     owner: root
     group: adm
+    mode: "644"
   notify: syskit_reload_ferm
 
 #- command: find /var/cache/ferm -mindepth 1 -delete
