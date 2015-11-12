@@ -35,5 +35,5 @@
     owner: root
     group: adm
     mode: "644"
-  with_items: debkit_ferm_modules
+  with_items: syskit_ferm_modules
   notify: syskit_reload_ferm
