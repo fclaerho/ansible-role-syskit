@@ -2,8 +2,8 @@
 dependencies: []
 galaxy_info:
   author: Florent Claerhout <code@fclaerhout.fr>
-  description: >
-    Debian system integration kit.
+  description: |
+    System Integration Kit.
     Configure users, groups, firewall, proxies, logs, etc. for services and tools.
   license: MIT
   min_ansible_version: 1.8.4
