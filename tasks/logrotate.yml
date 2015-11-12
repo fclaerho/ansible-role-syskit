@@ -15,4 +15,4 @@
     owner: root
     group: root
     mode: "644"
-  with_items: debkit_logrotate_modules
+  with_items: syskit_logrotate_modules

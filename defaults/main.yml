@@ -1,4 +1,4 @@
 ---
-debkit_users: []
-debkit_ferm_modules: []
-debkit_logrotate_modules: []
+syskit_users: []
+syskit_ferm_modules: []
+syskit_logrotate_modules: []

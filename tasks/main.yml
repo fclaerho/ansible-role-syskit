@@ -5,10 +5,10 @@
   when: ansible_distribution not in ['Ubuntu', 'Debian']
 - include: ferm.yml
   name: Taskfile ferm.yml is included
-  when: debkit_ferm_modules
+  when: syskit_ferm_modules
 - include: logrotate.yml
   name: Taskfile logrotate.yml is included
-  when: debkit_logrotate_modules
+  when: syskit_logrotate_modules
 - include: users.yml
   name: Taskfile users.yml is included
-  when: debkit_users
+  when: syskit_users

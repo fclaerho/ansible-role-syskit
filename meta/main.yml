@@ -17,15 +17,15 @@ galaxy_info:
     versions:
     - all
 version: 0.1
-prefix: debkit_
+prefix: syskit_
 variables:
-  debkit_logrotate_modules: "List of dict {'name', 'path', 'size', 'rotate'}"
-  debkit_ferm_modules: "List of dict {'name', ['daddr'], ['proto'], ['dport']}"
-  debkit_users: "List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…}"
+  syskit_logrotate_modules: "List of dict {'name', 'path', 'size', 'rotate'}"
+  syskit_ferm_modules: "List of dict {'name', ['daddr'], ['proto'], ['dport']}"
+  syskit_users: "List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…}"
 include_when:
-  logrotate.yml: debkit_logrotate_modules
-  users.yml: debkit_users
-  ferm.yml: debkit_ferm_modules
+  logrotate.yml: syskit_logrotate_modules
+  users.yml: syskit_users
+  ferm.yml: syskit_ferm_modules
 usage_complement: >
   Configurable features:
     * Logrotate

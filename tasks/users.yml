@@ -6,7 +6,7 @@
     home: "{{ item.home }}"
     state: "{{ item.state }}"
     groups: "{{ item.groups|join(',') }}"
-  with_items: debkit_users
+  with_items: syskit_users
 
 - name: Managed users .ssh/ directory is present
   file:
@@ -16,7 +16,7 @@
     group: "{{ item.name }}"
     mode: "700"
   when: item.state == "present" and item.sshkeys
-  with_items: debkit_users
+  with_items: syskit_users
 
 - name: Managed users private keys are present
   copy:
@@ -26,7 +26,7 @@
     group: "{{ item.0.name }}"
     mode: "600"
   with_subelements:
-  - debkit_users
+  - syskit_users
   - sshkeys
 
 - name: Managed users public keys are present
@@ -37,5 +37,5 @@
     group: jenkins
     mode: "644"
   with_subelements:
-  - debkit_users
+  - syskit_users
   - sshkeys
