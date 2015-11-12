@@ -1,7 +1,7 @@
 
 <!-- THIS IS A GENERATED FILE, DO NOT EDIT -->
 
-System Integration Kit. Finish integrating services and tools by configuring system specific concerns such as users, firewall, proxies, logs, etc.
+System Integration Kit. Finish integrating services and tools by configuring system specific features such as users, firewall, proxies, logs, etc. See the usage section of the exhaustive list of configurable features.
  Version 0.1.
 
 
@@ -29,7 +29,7 @@ register its ID in the `dependencies` list of the role manifest `meta/main.yml`.
 For further details,
 please refer to the Ansible documentation at https://docs.ansible.com/playbooks_roles.html.
 
-Available system concerns:
+Configurable features:
   * Logrotate
   * Users
   * [Ferm](), Debian default firewall abstraction
