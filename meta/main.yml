@@ -6,7 +6,7 @@ galaxy_info:
     System Integration Kit.
     Finish integrating services and tools by configuring system specific features
     such as users, firewall, proxies, logs, etc.
-    See the usage section of the exhaustive list of configurable features.
+    See the usage section for the exhaustive list of configurable features.
   license: MIT
   min_ansible_version: 1.8.4
   platforms:

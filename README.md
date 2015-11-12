@@ -1,7 +1,7 @@
 
 <!-- THIS IS A GENERATED FILE, DO NOT EDIT -->
 
-System Integration Kit. Finish integrating services and tools by configuring system specific features such as users, firewall, proxies, logs, etc. See the usage section of the exhaustive list of configurable features.
+System Integration Kit. Finish integrating services and tools by configuring system specific features such as users, firewall, proxies, logs, etc. See the usage section for the exhaustive list of configurable features.
  Version 0.1.
 
 
