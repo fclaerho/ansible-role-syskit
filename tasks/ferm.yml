@@ -12,6 +12,7 @@
   stat:
     path: /etc/ferm.d/default
   register: ferm_default
+  changed_when: no
 
 - name: Ferm default module is present
   command: mv /etc/ferm/ferm.conf /etc/ferm.d/default
