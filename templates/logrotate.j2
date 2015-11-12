@@ -1,8 +1,10 @@
-# keep {{ size }} of logs, delete otherwise
+# Summary:
+# - keep {{ item.size }} of logs
+# - {{ "delete otherwise" if not item.rotate else "archive " + item.rotate + " files" }}.
 
 {{ path }} {
 	missingok
 	copytruncate
-	size {{ size }}
-	rotate 0
+	size {{ item.size }}
+	rotate {{ item.rotate }}
 }
