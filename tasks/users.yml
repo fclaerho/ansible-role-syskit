@@ -13,7 +13,7 @@
     name: "{{ item.home }}/.ssh"
     state: directory
     owner: "{{ item.name }}"
-    #group: "{{ item.name }}"
+    group: "{{ item.name }}"
     mode: "700"
   when: item.state == "present" and item.sshkeys
   with_items: debkit_users
