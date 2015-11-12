@@ -14,9 +14,7 @@
 
 - name: Ferm is configured
   copy:
-    content: >
-      # Do not modify this file, populate /etc/ferm.d instead.
-      @include '/etc/ferm.d/';
+    content: "@include '/etc/ferm.d/';"
     dest: /etc/ferm/ferm.conf
     owner: root
     group: adm
