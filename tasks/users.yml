@@ -3,13 +3,14 @@
 - name: Managed users are present/absent
   user:
     name: "{{ item.name }}"
+    home: "{{ item.home }}"
     state: "{{ item.state }}"
     groups: "{{ item.groups|join(',') }}"
   with_items: debkit_users
 
 - name: Managed users .ssh/ directory is present
   file:
-    name: "/home/{{ item.name }}/.ssh"
+    name: "{{ item.home }}/.ssh"
     state: directory
     owner: "{{ item.name }}"
     #group: "{{ item.name }}"
@@ -20,7 +21,7 @@
 - name: Managed users private keys are present
   copy:
     content: "{{ item.1.keyval }}"
-    dest: "/home/{{ item.0.name }}/.ssh/{{ item.1.filename }}"
+    dest: "{{ item.0.home }}/.ssh/{{ item.1.filename }}"
     owner: "{{ item.0.name }}"
     #group: "{{ item.0.name }}"
     #mode: "0600"
@@ -31,7 +32,7 @@
 - name: Managed users public keys are present
   copy:
     content: "{{ item.1.pubval }}"
-    dest: "/home/{{ item.0.name }}/.ssh/{{ item.1.filename }}.pub"
+    dest: "{{ item.0.home }}/.ssh/{{ item.1.filename }}.pub"
     owner: jenkins
     #group: jenkins
     #mode: "644"
