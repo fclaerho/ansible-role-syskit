@@ -42,7 +42,7 @@ Configurable concerns:
   * Services: create/delete manifests
     * [Upstart](http://upstart.ubuntu.com/cookbook/) — `syskit_upstart_*`
     * [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) — `syskit_sysv_*`
-  * Users: create/delete accounts, install SSH keys
+  * Users: create/delete accounts, install SSH keys — `syskit_users`
 
 
 
