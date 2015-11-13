@@ -1,3 +1,0 @@
----
-syskit_upstart_manifests_path: /etc/init
-syskit_sysv_manifests_path: /etc/init.d
