@@ -35,7 +35,7 @@ usage_complement: >
   set `syskit_*` variables to configure the system concerns.
 
   Configurable concerns:
-    * Log Management: logrotate
+    * Log Management: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html)
     * Firewalling: [Ferm](http://ferm.foo-projects.org)
     * Services: create/delete [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) manifests
     * Users: create/delete accounts, install SSH keys

@@ -33,7 +33,7 @@ please refer to the Ansible documentation at https://docs.ansible.com/playbooks_
 
 The integration work is typically done at the playbook level: use 3rd-party roles to provision tools and services then set `syskit_*` variables to configure the system concerns.
 Configurable concerns:
-  * Log Management: logrotate
+  * Log Management: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html)
   * Firewalling: [Ferm](http://ferm.foo-projects.org)
   * Services: create/delete [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) manifests
   * Users: create/delete accounts, install SSH keys
