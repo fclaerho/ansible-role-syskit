@@ -14,13 +14,13 @@ System Integration Kit. Integrate services and tools by configuring system speci
 
 | Name | Value | Description |
 |------|-------|-------------|
-| syskit_ferm_modules | _default_ [] | List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state'} |
-| syskit_logrotate_modules | _default_ [] | List of dict {'name', 'path', 'size', 'state', 'rotate'} |
-| syskit_sysv_manifests | _default_ [] | List of dict {'uid', 'name', 'argv', 'state', 'daemon', ['pidfile'], 'description'} |
-| syskit_sysv_manifests_path | _var_ /etc/init.d |  |
-| syskit_upstart_manifests | _default_ [] | List of dict {'uid', 'name', 'argv', 'state', 'daemon', 'description'} |
-| syskit_upstart_manifests_path | _var_ /etc/init |  |
-| syskit_users | _default_ [] | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…} |
+| `syskit_ferm_modules` | _ `default`_ [] | List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state'} |
+| `syskit_logrotate_modules` | _ `default`_ [] | List of dict {'name', 'path', 'size', 'state', 'rotate'} |
+| `syskit_sysv_manifests` | _ `default`_ [] | List of dict {'uid', 'name', 'argv', 'state', 'daemon', ['pidfile'], 'description'} |
+| `syskit_sysv_manifests_path` | _ `var`_ /etc/init.d |  |
+| `syskit_upstart_manifests` | _ `default`_ [] | List of dict {'uid', 'name', 'argv', 'state', 'daemon', 'description'} |
+| `syskit_upstart_manifests_path` | _ `var`_ /etc/init |  |
+| `syskit_users` | _ `default`_ [] | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…} |
 
 
 
