@@ -16,7 +16,7 @@ System Integration Kit. Integrate services and tools by configuring system speci
 |------|-------|-------------|
 | syskit_ferm_modules | _(default:)_ [] | List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state'} |
 | syskit_logrotate_modules | _(default:)_ [] | List of dict {'name', 'path', 'size', 'state', 'rotate'} |
-| syskit_sysv_manifests |   | List of dict {'uid', 'name', 'state', daemon', ['pidfile']} |
+| syskit_sysv_manifests | _(default:)_ [] | List of dict {'uid', 'name', 'state', daemon', ['pidfile']} |
 | syskit_users | _(default:)_ [] | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…}
  |
 
