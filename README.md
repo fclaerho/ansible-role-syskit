@@ -20,8 +20,7 @@ System Integration Kit. Integrate services and tools by configuring system speci
 | syskit_sysv_manifests_path | _(var:)_ /etc/init.d | None |
 | syskit_upstart_manifests | _(default:)_ [] | List of dict {'uid', 'name', 'argv', 'state', 'daemon', 'description'} |
 | syskit_upstart_manifests_path | _(var:)_ /etc/init | None |
-| syskit_users | _(default:)_ [] | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…}
- |
+| syskit_users | _(default:)_ [] | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…} |
 
 
 
