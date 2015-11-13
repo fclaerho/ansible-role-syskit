@@ -14,10 +14,11 @@ System Integration Kit. Integrate services and tools by configuring system speci
 
 | Name | Value | Description |
 |------|-------|-------------|
-| syskit_ferm_modules | _(default:)_ [] | List of dict {'name', ['daddr'], ['proto'], ['dport']} |
-| syskit_logrotate_modules | _(default:)_ [] | List of dict {'name', 'path', 'size', 'rotate'} |
+| syskit_ferm_modules | _(default:)_ [] | List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state'} |
+| syskit_logrotate_modules | _(default:)_ [] | List of dict {'name', 'path', 'size', 'state', 'rotate'} |
 | syskit_sysv_manifests |   | List of dict {'uid', 'name', 'state', daemon', ['pidfile']} |
-| syskit_users | _(default:)_ [] | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…} |
+| syskit_users | _(default:)_ [] | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…}
+ |
 
 
 
@@ -34,7 +35,7 @@ The integration work is typically done at the playbook level: use 3rd-party role
 Configurable concerns:
   * Log Management: logrotate
   * Firewalling: [Ferm](http://ferm.foo-projects.org)
-  * Services: create/delete sysv manifests
+  * Services: create/delete [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) manifests
   * Users: create/delete accounts, install SSH keys
 
 

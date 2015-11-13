@@ -28,12 +28,20 @@
     mode: "644"
   notify: syskit_reload_ferm
 
+- name: Ferm modules are absent
+  file:
+    path: "/etc/ferm.d/{{ item.name }}"
+    state: absent
+  when: item.state == "absent"
+  with_items: syskit_ferm_modules
+
 - name: Ferm modules are present
   template:
     src: ferm.j2
-    dest: /etc/ferm.d/{{ item.name }}
+    dest: "/etc/ferm.d/{{ item.name }}"
     owner: root
     group: adm
     mode: "644"
+  when: item.state == "present"
   with_items: syskit_ferm_modules
   notify: syskit_reload_ferm
