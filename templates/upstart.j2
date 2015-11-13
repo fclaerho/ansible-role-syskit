@@ -1,0 +1,8 @@
+# upstart service manifest
+
+description "{{ item.description }}"
+start on startup
+stop on shutdown
+setuid {{ item.uid }}
+exec {{ item.daemon }} {{ item.argv }}
+respawn

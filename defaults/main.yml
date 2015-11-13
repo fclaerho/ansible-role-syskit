@@ -1,5 +1,6 @@
 ---
 syskit_logrotate_modules: []
+syskit_upstart_manifests: []
 syskit_sysv_manifests: []
 syskit_ferm_modules: []
 syskit_users: []

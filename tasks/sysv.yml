@@ -2,7 +2,7 @@
 
 - name: SysV service manifests are absent
   file:
-    path: "/etc/init.d/{{ item.name }}"
+    path: "{{ syskit_sysv_manifests_path }}/{{ item.name }}"
     state: absent
   when: item.state == "absent"
   with_items: syskit_sysv_manifests
@@ -10,7 +10,7 @@
 - name: SysV service manifests are present
   template:
     src: sysv.j2
-    dest: "/etc/init.d/{{ item.name }}"
+    dest: "{{ syskit_sysv_manifests_path }}/{{ item.name }}"
     mode: "755"
     owner: root
     group: root

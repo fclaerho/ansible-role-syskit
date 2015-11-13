@@ -20,7 +20,8 @@ version: 0.1
 prefix: syskit_
 variables:
   syskit_logrotate_modules: "List of dict {'name', 'path', 'size', 'state', 'rotate'}"
-  syskit_sysv_manifests: "List of dict {'uid', 'name', 'argv', 'state', 'daemon', ['pidfile']}"
+  syskit_upstart_manifests: "List of dict {'uid', 'name', 'argv', 'state', 'daemon', 'description'}"
+  syskit_sysv_manifests: "List of dict {'uid', 'name', 'argv', 'state', 'daemon', ['pidfile'], 'description'}"
   syskit_ferm_modules: "List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state'}"
   syskit_users: >
     List of dict {'name', 'home', 'groups', 'state',
@@ -36,6 +37,9 @@ usage_complement: >
 
   Configurable concerns:
     * Log Management: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html)
-    * Firewalling: [Ferm](http://ferm.foo-projects.org)
-    * Services: create/delete [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) manifests
+    * Firewalling: create/delete rules
+      * [Ferm](http://ferm.foo-projects.org)
+    * Services: create/delete manifests
+      * [Upstart](http://upstart.ubuntu.com/cookbook/)
+      * [SysV](https://en.wikipedia.org/wiki/Init#SysV-style)
     * Users: create/delete accounts, install SSH keys

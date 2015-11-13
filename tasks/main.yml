@@ -12,6 +12,9 @@
 - include: sysv.yml
   name: Taskfile sysv.yml is included
   when: true
+- include: upstart.yml
+  name: Taskfile upstart.yml is included
+  when: true
 - include: users.yml
   name: Taskfile users.yml is included
   when: syskit_users
