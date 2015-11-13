@@ -1,18 +1,18 @@
 ---
 
 - name: Upstart service manifests are absent
+  with_items: syskit_upstart_manifests
+  when: item.state == "absent"
   file:
     path: "{{ syskit_upstart_manifests_path }}/{{ item.name }}.conf"
     state: absent
-  when: item.state == "absent"
-  with_items: syskit_upstart_manifests
 
 - name: Upstart service manifests are present
+  with_items: syskit_upstart_manifests
+  when: item.state == "present"
   template:
     src: upstart.j2
     dest: "{{ syskit_upstart_manifests_path }}/{{ item.name }}.conf"
     mode: "755"
     owner: root
     group: root
-  when: item.state == "present"
-  with_items: syskit_upstart_manifests

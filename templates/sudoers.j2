@@ -1,0 +1,5 @@
+# Grant user all admin caps.
+
+Defaults  env_reset
+Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+{{ item.name }}  ALL=(ALL:ALL) NOPASSWD: ALL

@@ -1,41 +1,89 @@
 ---
 
 - name: Managed users are present/absent
+  with_items: syskit_users
   user:
     name: "{{ item.name }}"
     home: "{{ item.home }}"
     state: "{{ item.state }}"
     groups: "{{ item.groups|join(',') }}"
-  with_items: syskit_users
+    remove: yes
 
-- name: Managed users .ssh/ directory is present
+- name: Managed users .ssh/ directories are present
+  with_items: syskit_users
+  when: item.state == "present" and item.sshkeys
   file:
     name: "{{ item.home }}/.ssh"
     state: directory
     owner: "{{ item.name }}"
     group: "{{ item.name }}"
     mode: "700"
-  when: item.state == "present" and item.sshkeys
-  with_items: syskit_users
 
 - name: Managed users private keys are present
+  with_subelements:
+  - syskit_users
+  - sshkeys
+  when: item.0.state == "present" and item.1.state == "present"
   copy:
     content: "{{ item.1.keyval }}"
     dest: "{{ item.0.home }}/.ssh/{{ item.1.name }}"
     owner: "{{ item.0.name }}"
     group: "{{ item.0.name }}"
     mode: "600"
+
+- name: Managed users private keys are absent
   with_subelements:
   - syskit_users
   - sshkeys
+  when: item.0.state == "present" or item.1.state == "absent"
+  file:
+    path: "{{ item.0.home }}/.ssh/{{ item.1.name }}"
+    state: absent
 
 - name: Managed users public keys are present
+  with_subelements:
+  - syskit_users
+  - sshkeys
+  when: item.0.state == "present" and item.1.state == "present"
   copy:
     content: "{{ item.1.pubval }}"
     dest: "{{ item.0.home }}/.ssh/{{ item.1.name }}.pub"
     owner: jenkins
     group: jenkins
     mode: "644"
+
+- name: Managed users public keys are absent
   with_subelements:
   - syskit_users
   - sshkeys
+  when: item.0.state == "present" or item.1.state == "absent"
+  file:
+    path: "{{ item.0.home }}/.ssh/{{ item.1.name }}.pub"
+    state: absent
+
+- name: Managed users sudoer conf is present
+  with_items: syskit_users
+  when: item.state == "present" and item.sudoer
+  template:
+    src: sudoers.j2
+    dest: "/etc/sudoers.d/{{ item.name }}"
+    mode: "440"
+    owner: root
+    group: root
+
+- name: Managed users sudoer conf is absent
+  with_items: syskit_users
+  when: item.state == "absent" or not item.sudoer
+  file:
+    path: "/etc/sudoers.d/{{ item.name }}"
+    state: absent
+
+- name: Managed users authorized keys are present/absent
+  with_subelements:
+  - syskit_users
+  - authorized_keys
+  when: item.0.state == "present" or item.1.state == "absent"
+  authorized_key:
+    key: item.1.val
+    user: item.0.name
+    state: item.1.state

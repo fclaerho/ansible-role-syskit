@@ -9,18 +9,18 @@
     mode: "755"
 
 - name: Logrotate modules are absent
+  with_items: syskit_logrotate_modules
+  when: item.state == "absent"
   file:
     path: "/etc/logrotate.d/{{ item.name }}"
     state: absent
-  when: item.state == "absent"
-  with_items: syskit_logrotate_modules
 
 - name: Logrotate modules are present
+  with_items: syskit_logrotate_modules
+  when: item.state == "present"
   template:
     src: logrotate.j2
     dest: '/etc/logrotate.d/{{ item.name }}'
     owner: root
     group: root
     mode: "644"
-  when: item.state == "present"
-  with_items: syskit_logrotate_modules
