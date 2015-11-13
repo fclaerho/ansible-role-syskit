@@ -1,4 +1,5 @@
 ---
-syskit_users: []
-syskit_ferm_modules: []
 syskit_logrotate_modules: []
+syskit_sysv_manifests: []
+syskit_ferm_modules: []
+syskit_users: []
