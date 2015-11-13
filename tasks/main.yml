@@ -9,6 +9,9 @@
 - include: logrotate.yml
   name: Taskfile logrotate.yml is included
   when: syskit_logrotate_modules
+- include: sysv.yml
+  name: Taskfile sysv.yml is included
+  when: true
 - include: users.yml
   name: Taskfile users.yml is included
   when: syskit_users

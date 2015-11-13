@@ -1,7 +1,7 @@
 
 <!-- THIS IS A GENERATED FILE, DO NOT EDIT -->
 
-System Integration Kit. Finish integrating services and tools by configuring system specific features such as users, firewall, proxies, logs, etc. See the usage section for the exhaustive list of configurable features.
+System Integration Kit. Integrate services and tools by configuring system specific concerns such as logs, users, services, firewalling, proxying and so on. See the usage section for the exhaustive list of configurable concerns.
  Version 0.1.
 
 
@@ -16,6 +16,7 @@ System Integration Kit. Finish integrating services and tools by configuring sys
 |------|-------|-------------|
 | syskit_ferm_modules | _(default:)_ [] | List of dict {'name', ['daddr'], ['proto'], ['dport']} |
 | syskit_logrotate_modules | _(default:)_ [] | List of dict {'name', 'path', 'size', 'rotate'} |
+| syskit_sysv_manifests |   | List of dict {'uid', 'name', 'state', daemon', ['pidfile']} |
 | syskit_users | _(default:)_ [] | List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…} |
 
 
@@ -29,10 +30,11 @@ register its ID in the `dependencies` list of the role manifest `meta/main.yml`.
 For further details,
 please refer to the Ansible documentation at https://docs.ansible.com/playbooks_roles.html.
 
-The integration work is typically done at the playbook level: use 3rd-party roles to provision tools and services then set `syskit_*` variables to configure the system features.
-Configurable features:
+The integration work is typically done at the playbook level: use 3rd-party roles to provision tools and services then set `syskit_*` variables to configure the system concerns.
+Configurable concerns:
   * Log Management: logrotate
   * Firewalling: [Ferm](http://ferm.foo-projects.org)
+  * Services: create/delete sysv manifests
   * Users: create/delete accounts, install SSH keys
 
 

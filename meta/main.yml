@@ -4,9 +4,9 @@ galaxy_info:
   author: Florent Claerhout <code@fclaerhout.fr>
   description: >
     System Integration Kit.
-    Finish integrating services and tools by configuring system specific features
-    such as users, firewall, proxies, logs, etc.
-    See the usage section for the exhaustive list of configurable features.
+    Integrate services and tools by configuring system specific concerns
+    such as logs, users, services, firewalling, proxying and so on.
+    See the usage section for the exhaustive list of configurable concerns.
   license: MIT
   min_ansible_version: 1.8.4
   platforms:
@@ -20,6 +20,7 @@ version: 0.1
 prefix: syskit_
 variables:
   syskit_logrotate_modules: "List of dict {'name', 'path', 'size', 'rotate'}"
+  syskit_sysv_manifests: "List of dict {'uid', 'name', 'state', daemon', ['pidfile']}"
   syskit_ferm_modules: "List of dict {'name', ['daddr'], ['proto'], ['dport']}"
   syskit_users: "List of dict {'name', 'home', 'groups', 'state', 'sshkeys': {'name', 'keyval', 'pubval'}…}"
 include_when:
@@ -29,9 +30,10 @@ include_when:
 usage_complement: >
   The integration work is typically done at the playbook level:
   use 3rd-party roles to provision tools and services then
-  set `syskit_*` variables to configure the system features.
+  set `syskit_*` variables to configure the system concerns.
 
-  Configurable features:
+  Configurable concerns:
     * Log Management: logrotate
     * Firewalling: [Ferm](http://ferm.foo-projects.org)
+    * Services: create/delete sysv manifests
     * Users: create/delete accounts, install SSH keys
