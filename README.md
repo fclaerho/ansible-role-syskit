@@ -36,12 +36,14 @@ The integration work is typically done at the playbook level: use 3rd-party role
 Configurable concerns:
   * Log Management:
     * [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
-  * Firewalling: create/delete rules
+  * Firewalling: create/delete/update rules
     * [Ferm](http://ferm.foo-projects.org) — `syskit_ferm_*`
-  * Services: create/delete manifests
+  * Services: create/delete/update manifests
     * [Upstart](http://upstart.ubuntu.com/cookbook/) — `syskit_upstart_*`
     * [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) — `syskit_sysv_*`
-  * Users: create/delete accounts, install SSH keys — `syskit_users`
+  * Users: create/delete/update accounts
+    * `syskit_root_pw_locked`
+    * `syskit_users`
 
 
 
