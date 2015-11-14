@@ -1,0 +1,43 @@
+---
+
+- name: Nginx packages are present
+  apt:
+    name: nginx-extras
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Nginx sites are available
+  with_items: syskit_nginx_sites
+  template:
+    src: site.j2
+    dest: "/etc/nginx/sites-available/{{ item.name }}"
+    owner: www-data
+    group: www-data
+
+- name: Nginx sites are enabled
+  with_items: syskit_nginx_sites
+  when: item.enabled
+  file:
+    src: "/etc/nginx/sites-available/{{ item.name }}"
+    dest: "/etc/nginx/sites-enabled/{{ item.name }}"
+    state: link
+    owner: www-data
+    group: www-data
+  notify:
+  - syskit_reload_nginx
+
+- name: Nginx sites are disabled
+  with_items: syskit_nginx_sites
+  when: not item.enabled
+  file:
+    path: "/etc/nginx/sites-enabled/{{ item.name }}"
+    state: absent
+  notify:
+  - syskit_reload_nginx
+
+- name: nginx service is started
+  service:
+    name: nginx
+    state: started
+    enabled: yes
