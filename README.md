@@ -16,7 +16,7 @@ System Integration Kit. Integrate services and tools by configuring system speci
 |------|-------|-------------|
 | `syskit_ferm_modules` | _default_ `[]` | List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent} |
 | `syskit_logrotate_modules` | _default_ `[]` | List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'} |
-| `syskit_root_pw_locked` |   |  |
+| `syskit_root_pw_locked` | _default_ `False` | Lock/Unlock root password, as a best practice |
 | `syskit_sysv_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'} |
 | `syskit_upstart_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'} |
 | `syskit_users` | _default_ `[]` | List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…} |
