@@ -87,3 +87,11 @@
     key: item.1.val
     user: item.0.name
     state: item.1.state
+
+- name: Root account password is locked -- use an authorized user account for subsequent provisionings
+  when: syskit_root_pw_locked
+  command: passwd -l root
+
+- name: Root account password is unlocked
+  when: not syskit_root_pw_locked
+  command: passwd -u root

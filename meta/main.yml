@@ -24,6 +24,7 @@ variables:
   syskit_sysv_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'}"
   syskit_ferm_modules: "List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent}"
   syskit_users: "List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
+  syskit_root_pw_locked: False
 include_when:
   logrotate.yml: syskit_logrotate_modules
   users.yml: syskit_users
