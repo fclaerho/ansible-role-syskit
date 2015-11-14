@@ -16,6 +16,7 @@ System Integration Kit. Integrate services and tools by configuring system speci
 |------|-------|-------------|
 | `syskit_ferm_modules` | _default_ `[]` | List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent} |
 | `syskit_logrotate_modules` | _default_ `[]` | List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'} |
+| `syskit_nginx_sites` | _default_ `[]` | List of dict {'name', 'enabled'} |
 | `syskit_root_pw_locked` | _default_ `False` | Boolean. If set, lock root password, as a best practice |
 | `syskit_sysv_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'} |
 | `syskit_upstart_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'} |
@@ -34,6 +35,8 @@ please refer to the Ansible documentation at https://docs.ansible.com/playbooks_
 
 The integration work is typically done at the playbook level: use 3rd-party roles to provision tools and services then set `syskit_*` variables to configure the system concerns.
 Configurable concerns:
+  * **Reverse Proxying**:
+    * [Nginx](http://nginx.org/en/) — `syskit_nginx_*`
   * **Log Management**:
     * [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
   * **Firewalling**: create/delete/update rules

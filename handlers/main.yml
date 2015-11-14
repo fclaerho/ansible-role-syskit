@@ -7,3 +7,8 @@
 # command: find /var/cache/ferm -mindepth 1 -delete
 - name: syskit_reload_ferm
   command: ferm /etc/ferm/ferm.conf
+
+- name: syskit_reload_nginx
+  service:
+    name: nginx
+    state: reloaded

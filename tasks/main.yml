@@ -9,12 +9,15 @@
 - include: logrotate.yml
   name: Taskfile logrotate.yml is included
   when: syskit_logrotate_modules
+- include: nginx.yml
+  name: Taskfile nginx.yml is included
+  when: syskit_nginx_sites
 - include: sysv.yml
   name: Taskfile sysv.yml is included
-  when: true
+  when: syskit_sysv_manifests
 - include: upstart.yml
   name: Taskfile upstart.yml is included
-  when: true
+  when: syskit_upstart_manifests
 - include: users.yml
   name: Taskfile users.yml is included
   when: syskit_users
