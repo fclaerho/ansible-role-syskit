@@ -1,7 +1,12 @@
 ---
 
+# deluser will segfault if LANG!=C
+# REF: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=660406
 - name: Managed users are present/absent
   with_items: syskit_users
+  environment:
+    LANG: C
+    LC_CTYPE: C
   user:
     name: "{{ item.name }}"
     home: "{{ item.home }}"
