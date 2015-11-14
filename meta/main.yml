@@ -23,7 +23,7 @@ variables:
   syskit_upstart_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'}"
   syskit_sysv_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'}"
   syskit_ferm_modules: "List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent}"
-  syskit_nginx_sites: "List of dict {'name', 'enabled'}"
+  syskit_nginx_sites: "List of dict {'enabled': yes/no, upstream': {'name', 'address', 'port', 'timeout'}, 'server': {'name', 'tls_crt_path', 'tls_key_path'}"
   syskit_users: "List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
   syskit_root_pw_locked: "Boolean. If set, lock root password, as a best practice"
 include_when:
@@ -40,14 +40,14 @@ usage_complement: >
 
   Configurable concerns:
     * **Reverse Proxying**:
-      * [Nginx](http://nginx.org/en/) — `syskit_nginx_*`
+      * [Nginx](http://nginx.org/en/) — `syskit_nginx_sites`
     * **Log Management**:
-      * [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
+      * [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_modules`
     * **Firewalling**: create/delete/update rules
-      * [Ferm](http://ferm.foo-projects.org) — `syskit_ferm_*`
+      * [Ferm](http://ferm.foo-projects.org) — `syskit_ferm_rules`
     * **Services**: create/delete/update manifests
-      * [Upstart](http://upstart.ubuntu.com/cookbook/) — `syskit_upstart_*`
-      * [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) — `syskit_sysv_*`
+      * [Upstart](http://upstart.ubuntu.com/cookbook/) — `syskit_upstart_manifests`
+      * [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) — `syskit_sysv_manifests`
     * **Users**: create/delete/update accounts
       * `syskit_root_pw_locked`
       * `syskit_users`

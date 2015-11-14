@@ -1,6 +1,6 @@
 
 upstream {{ item.upstream.name }} {
-	server {{ item.upstream.address}}:{{item.upstream.port}} fail_timeout=0;
+	server {{ item.upstream.address }}:{{ item.upstream.port }} fail_timeout={{ item.upstream.timeout }};
 }
 
 server {

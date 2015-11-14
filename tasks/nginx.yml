@@ -11,7 +11,7 @@
   with_items: syskit_nginx_sites
   template:
     src: site.j2
-    dest: "/etc/nginx/sites-available/{{ item.name }}"
+    dest: "/etc/nginx/sites-available/{{ item.server.name }}"
     owner: www-data
     group: www-data
 
@@ -19,8 +19,8 @@
   with_items: syskit_nginx_sites
   when: item.enabled
   file:
-    src: "/etc/nginx/sites-available/{{ item.name }}"
-    dest: "/etc/nginx/sites-enabled/{{ item.name }}"
+    src: "/etc/nginx/sites-available/{{ item.server.name }}"
+    dest: "/etc/nginx/sites-enabled/{{ item.server.name }}"
     state: link
     owner: www-data
     group: www-data
@@ -31,7 +31,7 @@
   with_items: syskit_nginx_sites
   when: not item.enabled
   file:
-    path: "/etc/nginx/sites-enabled/{{ item.name }}"
+    path: "/etc/nginx/sites-enabled/{{ item.server.name }}"
     state: absent
   notify:
   - syskit_reload_nginx
