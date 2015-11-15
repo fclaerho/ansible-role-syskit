@@ -28,6 +28,7 @@ variables:
   syskit_nginx_autopurge: "Boolean. Purge nginx if no site is defined"
   syskit_users: "List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubpath', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
   syskit_root_pw_locked: "Boolean. If set, lock root password (RECOMMENDED)"
+  syskit_apt_proxy: "Dict {'http': {'hostname', ['directs']}, 'https': {'hostname', ['directs']}}"
 include_when:
   #logrotate.yml: syskit_logrotate_modules <- no, as we need to purge packages if autopurge is on
   upstart.yml: syskit_upstart_manifests
