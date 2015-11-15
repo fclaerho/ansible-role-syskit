@@ -3,6 +3,9 @@
     msg: unsupported platform -- please contact the role maintainer for support
   name: Assert the target platform is supported
   when: ansible_distribution not in ['Ubuntu', 'Debian']
+- include: apt.yml
+  name: Taskfile apt.yml is included
+  when: syskit_apt_proxy
 - include: ferm.yml
   name: Taskfile ferm.yml is included
   when: syskit_ferm_modules

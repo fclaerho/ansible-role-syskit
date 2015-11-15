@@ -1,0 +1,15 @@
+
+Acquire {
+	http {
+		Proxy "{{ syskit_apt_proxy.http.hostname }}";
+{% for item in syskit_apt_proxy.http.directs|default([]) %}
+		Proxy::{{item}} "DIRECT";
+{% endfor %}
+	}
+	https {
+		Proxy "{{ syskit_apt_proxy.https.hostname }}";
+{% for item in syskit_apt_proxy.https.directs|default([]) %}
+		Proxy::{{ item }} "DIRECT";
+{% endfor %}
+	}
+}
