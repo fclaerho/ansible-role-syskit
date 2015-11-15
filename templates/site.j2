@@ -5,7 +5,7 @@ upstream {{ item.upstream.name }} {
 
 server {
 	server_name         {{ item.server.name }};
-{% if item.server.ssl %}
+{% if item.server.tls %}
 	listen              {{ item.server.port|default(443) }} ssl;
 	ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
 	ssl_certificate     {{ item.server.tls_crt_path }};
