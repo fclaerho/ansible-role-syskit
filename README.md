@@ -50,9 +50,10 @@ Configurable concerns:
   * **Services**: create/delete/update manifests
     * [Upstart](http://upstart.ubuntu.com/cookbook/) — `syskit_upstart_manifests`
     * [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) — `syskit_sysv_manifests`
-  * **Users**: create/delete/update accounts
-    * `syskit_root_pw_locked`
-    * `syskit_users`
+  * **Users**: create/delete/update accounts — `syskit_users`
+  * **Misc**:
+    * Lock/Unlock the root account — `syskit_root_pw_locked`
+    * Configure Apt proxy — `syskit_apt_proxy`
 
 **NOTICE:** All private keys `*.keyval` are expected to be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html). Public assets (certificates `*.crtpath`, public keys `*.pubpath`) are expected to be files copied over.
 
