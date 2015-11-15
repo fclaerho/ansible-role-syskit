@@ -55,7 +55,7 @@ Configurable concerns:
     * Lock/Unlock the root account — `syskit_root_pw_locked`
     * Configure Apt proxy — `syskit_apt_proxy`
 
-**NOTICE:** All private keys `*.keyval` are expected to be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html). Public assets (certificates `*.crtpath`, public keys `*.pubpath`) are expected to be files copied over.
+**NOTICE:** All private keys `*.keyval` are expected to be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html) (or any equivalent.) Public assets (certificates `*.crtpath`, public keys `*.pubpath`) are expected to be files copied over.
 
 
 
