@@ -50,7 +50,7 @@ Configurable concerns:
     * `syskit_root_pw_locked`
     * `syskit_users`
 
-All private keys `*_keyval` are expected to be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html).
+**IMPORTANT** All private keys `*_keyval` are expected to be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html). Public assets (certificates, public keys) are expected to be files copied over.
 
 
 
