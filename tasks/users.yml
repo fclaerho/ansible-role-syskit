@@ -51,7 +51,7 @@
   - sshkeys
   when: item.0.state == "present" and item.1.state == "present"
   copy:
-    content: "{{ item.1.pubval }}"
+    src: "{{ item.1.pubpath }}"
     dest: "{{ item.0.home }}/.ssh/{{ item.1.name }}.pub"
     owner: jenkins
     group: jenkins

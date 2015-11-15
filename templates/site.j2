@@ -1,3 +1,4 @@
+# reverse-proxy {{ item.server.name }} to {{ item.upstream.name }}
 
 upstream {{ item.upstream.name }} {
 	server {{ item.upstream.address }}:{{ item.upstream.port }} fail_timeout={{ item.upstream.timeout }};
@@ -8,8 +9,8 @@ server {
 {% if item.server.tls %}
 	listen              {{ item.server.port|default(443) }} ssl{{ ' default_server' if item.default else ''}};
 	ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
-	ssl_certificate     {{ item.server.tls.crtpath }};
-	ssl_certificate_key {{ item.server.tls.keypath}};
+	ssl_certificate     /etc/ssl/certs/{{ item.server.name }}.crt;
+	ssl_certificate_key /etc/ssl/private/{{ item.server.name }}.key;
 {% else %}
 	listen              {{ item.server.port|default(80) }}{{ ' default_server' if item.default else ''}};
 {% endif %}
