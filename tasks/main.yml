@@ -8,7 +8,7 @@
   when: syskit_ferm_modules
 - include: logrotate.yml
   name: Taskfile logrotate.yml is included
-  when: syskit_logrotate_modules
+  when: true
 - include: nginx.yml
   name: Taskfile nginx.yml is included
   when: true

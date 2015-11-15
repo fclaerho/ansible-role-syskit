@@ -1,9 +1,10 @@
 ---
+syskit_logrotate_autopurge: no
 syskit_logrotate_modules: []
 syskit_upstart_manifests: []
+syskit_nginx_autopurge: yes
 syskit_root_pw_locked: False
 syskit_sysv_manifests: []
 syskit_ferm_modules: []
 syskit_nginx_sites: []
-syskit_nginx_autopurge: yes
 syskit_users: []

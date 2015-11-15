@@ -5,16 +5,16 @@
 ############ 
 
 # install nginx if any site is defined
-- name: Nginx packages are present
+- name: Nginx package is present
   when: syskit_nginx_sites
   apt:
-    name: nginx-extras
+    name: nginx
     state: present
     update_cache: yes
     cache_valid_time: 3600
 
 # purge nginx if no site is defined and autopurge is set
-- name: Nginx packages are absent
+- name: Nginx package is absent
   when: not syskit_nginx_sites and syskit_nginx_autopurge
   apt:
     name: nginx
