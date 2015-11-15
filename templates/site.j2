@@ -1,4 +1,4 @@
-# reverse-proxy {{ item.server.name }}:{{ item.server.port }} to {{ item.upstream.address }}:{{ item.upstream.port }}
+# Reverse-proxy {{ item.server.name }} to {{ item.upstream.address }}:{{ item.upstream.port }}.
 
 upstream {{ item.upstream.name }} {
 	server {{ item.upstream.address }}:{{ item.upstream.port }} fail_timeout={{ item.upstream.timeout|default(4) }};
