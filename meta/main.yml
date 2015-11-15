@@ -24,12 +24,13 @@ variables:
   syskit_sysv_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'}"
   syskit_ferm_modules: "List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent}"
   syskit_nginx_sites: "List of dict {'enabled': yes/no, upstream': {'name', 'address', 'port', 'timeout'}, 'server': {'name', 'tls_crt_path', 'tls_key_path'}"
+  syskit_nginx_autopurge: "Boolean. Uninstall nginx if no site is defined"
   syskit_users: "List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
   syskit_root_pw_locked: "Boolean. If set, lock root password, as a best practice"
 include_when:
   logrotate.yml: syskit_logrotate_modules
   upstart.yml: syskit_upstart_manifests
-  nginx.yml: syskit_nginx_sites
+  #nginx.yml: syskit_nginx_sites <- no, as we need to purge nginx if autopurge is on
   users.yml: syskit_users
   sysv.yml: syskit_sysv_manifests
   ferm.yml: syskit_ferm_modules

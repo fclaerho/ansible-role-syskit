@@ -1,11 +1,19 @@
 ---
 
 - name: Nginx packages are present
+  when: syskit_nginx_sites
   apt:
     name: nginx-extras
     state: present
     update_cache: yes
     cache_valid_time: 3600
+
+- name: Nginx packages are absent
+  when: not syskit_nginx_sites and syskit_nginx_autopurge
+  apt:
+    name: nginx
+    state: absent
+    purge: yes
 
 - name: Nginx sites are available
   with_items: syskit_nginx_sites
@@ -37,6 +45,7 @@
   - syskit_reload_nginx
 
 - name: nginx service is started
+  when: syskit_nginx_sites
   service:
     name: nginx
     state: started

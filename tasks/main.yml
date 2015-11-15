@@ -11,7 +11,7 @@
   when: syskit_logrotate_modules
 - include: nginx.yml
   name: Taskfile nginx.yml is included
-  when: syskit_nginx_sites
+  when: true
 - include: sysv.yml
   name: Taskfile sysv.yml is included
   when: syskit_sysv_manifests
