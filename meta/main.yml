@@ -35,7 +35,7 @@ include_when:
   users.yml: syskit_users
   sysv.yml: syskit_sysv_manifests
   ferm.yml: syskit_ferm_modules
-usage_complement: >
+usage_complement: |
   The integration work is typically done at the playbook level:
   use 3rd-party roles to provision tools and services then
   set `syskit_*` variables to configure the system concerns.

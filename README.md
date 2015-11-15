@@ -35,7 +35,10 @@ register its ID in the `dependencies` list of the role manifest `meta/main.yml`.
 For further details,
 please refer to the Ansible documentation at https://docs.ansible.com/playbooks_roles.html.
 
-The integration work is typically done at the playbook level: use 3rd-party roles to provision tools and services then set `syskit_*` variables to configure the system concerns.
+The integration work is typically done at the playbook level:
+use 3rd-party roles to provision tools and services then
+set `syskit_*` variables to configure the system concerns.
+
 Configurable concerns:
   * **Reverse Proxying**: create/delete/update vhosts
     * [Nginx](http://nginx.org/en/) — `syskit_nginx_*`
