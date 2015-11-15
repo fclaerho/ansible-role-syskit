@@ -18,7 +18,7 @@ System Integration Kit. Integrate services and tools by configuring system speci
 | `syskit_logrotate_autopurge` | _default_ `False` | Boolean. Purge logrotate if no module is defined |
 | `syskit_logrotate_modules` | _default_ `[]` | List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'} |
 | `syskit_nginx_autopurge` | _default_ `True` | Boolean. Purge nginx if no site is defined |
-| `syskit_nginx_sites` | _default_ `[]` | List of dict {'state': present/absent, 'enabled': yes/no, 'upstream': {'name', 'address', 'port', 'timeout', 'protocol'}, 'server': {'name', ['port'], 'tls': [{'crtpath', 'keyval'}], 'default': yes/no } |
+| `syskit_nginx_sites` | _default_ `[]` | List of dict {'state': present/absent, 'enabled': yes/no, 'upstream': {'name', 'address', 'port', ['timeout':4], 'protocol'}, 'server': {'name', ['port'], 'tls': [{'crtpath', 'keyval'}], ['default': no]} } |
 | `syskit_root_pw_locked` | _default_ `False` | Boolean. If set, lock root password, as a best practice |
 | `syskit_sysv_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'} |
 | `syskit_upstart_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'} |

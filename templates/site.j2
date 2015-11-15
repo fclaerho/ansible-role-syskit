@@ -1,9 +1,9 @@
-{% set item_upstream_timeout = {{ item.upstream.timeout|default(4) }} %}
-{% set listen_suffix = ' default_server' if {{ item.default|default(False) }} else '' %}
+{% set item_upstream_timeout = item.upstream.timeout|default(4) %}
+{% set listen_suffix = ' default_server' if item.default|default(False) else '' %}
 {% if item.server.tls %}
-	{% set item_server_port = {{ item.server.port|default(443) }} %}
+	{% set item_server_port = item.server.port|default(443) %}
 {% else %}
-	{% set item_server_port = {{ item.server.port|default(80) }} %}
+	{% set item_server_port = item.server.port|default(80) %}
 {% endif %}
 ###
 # Reverse-proxy {{ item.server.name }}:{{ item_server_port }} to {{ item.upstream.address }}:{{ item.upstream.port }}.
