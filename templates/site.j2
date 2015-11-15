@@ -8,8 +8,8 @@ server {
 {% if item.server.tls %}
 	listen              {{ item.server.port|default(443) }} ssl;
 	ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
-	ssl_certificate     {{ item.server.tls_crt_path }};
-	ssl_certificate_key {{ item.server.tls_key_path}};
+	ssl_certificate     {{ item.server.tls.crtpath }};
+	ssl_certificate_key {{ item.server.tls.keypath}};
 {% else %}
 	listen              {{ item.server.port|default(80) }};
 {% endif %}

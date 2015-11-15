@@ -23,7 +23,7 @@ variables:
   syskit_upstart_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'}"
   syskit_sysv_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'}"
   syskit_ferm_modules: "List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent}"
-  syskit_nginx_sites: "List of dict {'enabled': yes/no, upstream': {'name', 'address', 'port', 'timeout'}, 'server': {'name', ['port'], 'tls': yes/no, 'tls_crt_path', 'tls_key_path'}"
+  syskit_nginx_sites: "List of dict {'enabled': yes/no, upstream': {'name', 'address', 'port', 'timeout'}, 'server': {'name', ['port'], 'tls': [{'crtpath', 'keypath'}] }"
   syskit_nginx_autopurge: "Boolean. Uninstall nginx if no site is defined"
   syskit_users: "List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
   syskit_root_pw_locked: "Boolean. If set, lock root password, as a best practice"

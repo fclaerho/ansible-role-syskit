@@ -17,7 +17,7 @@ System Integration Kit. Integrate services and tools by configuring system speci
 | `syskit_ferm_modules` | _default_ `[]` | List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent} |
 | `syskit_logrotate_modules` | _default_ `[]` | List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'} |
 | `syskit_nginx_autopurge` | _default_ `True` | Boolean. Uninstall nginx if no site is defined |
-| `syskit_nginx_sites` | _default_ `[]` | List of dict {'enabled': yes/no, upstream': {'name', 'address', 'port', 'timeout'}, 'server': {'name', ['port'], 'tls': yes/no, 'tls_crt_path', 'tls_key_path'} |
+| `syskit_nginx_sites` | _default_ `[]` | List of dict {'enabled': yes/no, upstream': {'name', 'address', 'port', 'timeout'}, 'server': {'name', ['port'], 'tls': [{'crtpath', 'keypath'}] } |
 | `syskit_root_pw_locked` | _default_ `False` | Boolean. If set, lock root password, as a best practice |
 | `syskit_sysv_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'} |
 | `syskit_upstart_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'} |
