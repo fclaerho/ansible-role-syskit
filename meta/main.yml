@@ -35,7 +35,7 @@ include_when:
   #nginx.yml: syskit_nginx_sites <- no, as we need to purge packages if autopurge is on
   users.yml: syskit_users
   sysv.yml: syskit_sysv_manifests
-  ferm.yml: syskit_ferm_modules
+  ferm.yml: syskit_ferm_rules
   apt.yml: syskit_apt_proxy
 usage_complement: |
   The integration work is typically done at the playbook level:
