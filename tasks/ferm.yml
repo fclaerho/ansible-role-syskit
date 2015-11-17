@@ -31,7 +31,7 @@
 
 # unprep ferm.d/
 
-- name: Move back default module back as main configuration
+- name: Move back default module as main configuration
   when: not syskit_ferm_rules
   command: mv /etc/ferm.d/default /etc/ferm/ferm.conf
   args:
