@@ -1,9 +1,5 @@
 ---
 
-- name: Upstart facts are set
-  set_fact:
-    syskit_upstart_manifests_path: /etc/init
-
 - name: Upstart service manifests are absent
   with_items: syskit_upstart_manifests
   when: item.state == "absent"

@@ -22,7 +22,9 @@ System Integration Kit. Integrate services and tools by configuring system speci
 | `syskit_nginx_sites` | _default_ `[]` | List of dict {'state': present/absent, 'enabled': yes/no, 'upstream': {'name', 'address', 'port', ['timeout':4], 'protocol'}, 'server': {'name', ['port'], 'tls': [{'crtpath', 'keyval'}], ['default': no]} } |
 | `syskit_root_pw_locked` | _default_ `False` | Boolean. If set, lock root password (recommended) |
 | `syskit_sysv_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'} |
+| `syskit_sysv_manifests_path` | _var_ `/etc/init.d` |  |
 | `syskit_upstart_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'} |
+| `syskit_upstart_manifests_path` | _var_ `/etc/init` |  |
 | `syskit_users` | _default_ `[]` | List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubpath', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…} |
 
 
