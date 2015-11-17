@@ -9,14 +9,14 @@
     mode: "750"
 
 - name: Assess ferm default module
+  register: ferm_default
   stat:
     path: /etc/ferm.d/default
-  register: ferm_default
   changed_when: no
 
 - name: Ferm default module is present
-  command: mv /etc/ferm/ferm.conf /etc/ferm.d/default
   when: not ferm_default.stat.exists
+  command: mv /etc/ferm/ferm.conf /etc/ferm.d/default
   notify: syskit_reload_ferm
 
 - name: Ferm is configured
@@ -29,14 +29,14 @@
   notify: syskit_reload_ferm
 
 - name: Ferm modules are absent
-  with_items: syskit_ferm_modules
+  with_items: syskit_ferm_rules
   when: item.state == "absent"
   file:
     path: "/etc/ferm.d/{{ item.name }}"
     state: absent
 
 - name: Ferm modules are present
-  with_items: syskit_ferm_modules
+  with_items: syskit_ferm_rules
   when: item.state == "present"
   template:
     src: ferm.j2

@@ -5,7 +5,7 @@ syskit_upstart_manifests: []
 syskit_nginx_autopurge: yes
 syskit_root_pw_locked: False
 syskit_sysv_manifests: []
-syskit_ferm_modules: []
 syskit_nginx_sites: []
+syskit_ferm_rules: []
 syskit_apt_proxy: None
 syskit_users: []
