@@ -7,7 +7,7 @@
   when: syskit_apt_proxy
 - include: ferm.yml
   name: Taskfile ferm.yml is included
-  when: syskit_ferm_rules
+  when: true
 - include: logrotate.yml
   name: Taskfile logrotate.yml is included
   when: true

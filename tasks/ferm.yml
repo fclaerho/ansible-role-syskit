@@ -1,8 +1,9 @@
 ---
 
-# TODO: if there's no rule and ferm.d/ is empty, collapse it back to the default layout?
+# prep ferm.d/
 
 - name: Ferm module directory is present
+  when: syskit_ferm_rules
   file:
     path: /etc/ferm.d
     state: directory
@@ -10,25 +11,38 @@
     group: adm
     mode: "750"
 
-- name: Assess ferm default module
-  register: ferm_default
-  stat:
-    path: /etc/ferm.d/default
-  changed_when: no
-
 - name: Ferm default module is present
-  when: not ferm_default.stat.exists
+  when: syskit_ferm_rules
   command: mv /etc/ferm/ferm.conf /etc/ferm.d/default
+  args:
+    creates: /etc/ferm.d/default
   notify: syskit_reload_ferm
 
 - name: Ferm is configured
+  when: syskit_ferm_rules
   copy:
     content: "@include '/etc/ferm.d/';"
     dest: /etc/ferm/ferm.conf
     owner: root
     group: adm
     mode: "644"
+    backup: yes
   notify: syskit_reload_ferm
+
+# unprep ferm.d/
+
+- name: Move back default module back as main configuration
+  when: not syskit_ferm_rules
+  command: mv /etc/ferm.d/default /etc/ferm/ferm.conf
+  args:
+    removes: /etc/ferm.d/default
+  notify: syskit_reload_ferm
+
+- name: Ferm module directory is present
+  when: not syskit_ferm_rules
+  command: rmdir /etc/ferm.d
+
+# rules
 
 - name: Ferm modules are absent
   with_items: syskit_ferm_rules
