@@ -1,5 +1,7 @@
 ---
 
+# TODO: if there's no rule and ferm.d/ is empty, collapse it back to the default layout?
+
 - name: Ferm module directory is present
   file:
     path: /etc/ferm.d
