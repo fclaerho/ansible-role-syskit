@@ -38,9 +38,11 @@
     removes: /etc/ferm.d/default
   notify: syskit_reload_ferm
 
-- name: Ferm module directory is present
+- name: Ferm module directory is absent
   when: not syskit_ferm_rules
   command: rmdir /etc/ferm.d
+  args:
+    removes: /etc/ferm.d
 
 # rules
 
