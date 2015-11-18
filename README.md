@@ -75,5 +75,5 @@ The following files are generated or updated based on various role assets:
   * `tasks/main.yml`
   * `README.md`
 
-On [Galaxy](https://galaxy.ansible.com/accounts/profile/#/), re-import the repository.
+On [Galaxy](https://galaxy.ansible.com/accounts/profile), re-import the repository.
 

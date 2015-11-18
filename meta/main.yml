@@ -68,4 +68,4 @@ usage_complement: |
   **NOTICE:** All private keys `*.keyval` are expected to be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html) (or any equivalent.) Public assets (certificates `*.crtpath`, public keys `*.pubpath`) are expected to be files copied over.
 
 maintenance_complement: >
-  On [Galaxy](https://galaxy.ansible.com/accounts/profile/#/), re-import the repository.
+  On [Galaxy](https://galaxy.ansible.com/accounts/profile), re-import the repository.
