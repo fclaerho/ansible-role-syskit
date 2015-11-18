@@ -16,7 +16,7 @@ System Integration Kit. Integrate services and tools by configuring system speci
 |------|-------|-------------|
 | `syskit_apt_proxy` | _default_ `None` | Dict {'http': {'hostname', ['directs']}, 'https': {'hostname', ['directs ']}} |
 | `syskit_ferm_rules` | _default_ `[]` | List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent} |
-| `syskit_logforward` | _default_ `{}` | Dict {'tcp': {'address', ['port']}, 'udp': {'address', ['port']}} |
+| `syskit_logforward` | _default_ `{}` | Dict {'tcp': {'address', ['port': 514]}, 'udp': {'address', ['port': 514]}} |
 | `syskit_logrotate_autopurge` | _default_ `False` | Boolean. Purge logrotate if no module is defined |
 | `syskit_logrotate_modules` | _default_ `[]` | List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'} |
 | `syskit_nginx_autopurge` | _default_ `True` | Boolean. Purge nginx if no site is defined |

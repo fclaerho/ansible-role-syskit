@@ -1,9 +1,9 @@
 # Forward logs to remote server(s).
 
 {% if syskit_logforward.tcp %}
-*.* @@{{ syskit_logforward.tcp.address }}:{{ syskit_logforward.tcp.port }}
+*.* @@{{ syskit_logforward.tcp.address }}:{{ syskit_logforward.tcp.port|default(514) }}
 {% endif %}
 
 {% if syskit_rsyslog_forward.udp %}
-*.* @{{ syskit_logforward.udp.address }}:{{ syskit_logforward.udp.port }}
+*.* @{{ syskit_logforward.udp.address }}:{{ syskit_logforward.udp.port|default(514) }}
 {% endif %}

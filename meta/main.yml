@@ -29,7 +29,7 @@ variables:
   syskit_users: "List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
   syskit_root_pw_locked: "Boolean. If set, lock root password (recommended)"
   syskit_apt_proxy: "Dict {'http': {'hostname', ['directs']}, 'https': {'hostname', ['directs ']}}"
-  syskit_logforward: "Dict {'tcp': {'address', ['port']}, 'udp': {'address', ['port']}}"
+  syskit_logforward: "Dict {'tcp': {'address', ['port': 514]}, 'udp': {'address', ['port': 514]}}"
 
 include_when: {}
 
