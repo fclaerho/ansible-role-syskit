@@ -23,10 +23,10 @@ variables:
   syskit_logrotate_autopurge: "Boolean. Purge logrotate if no module is defined"
   syskit_upstart_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'}"
   syskit_sysv_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'}"
-  syskit_nginx_sites: "List of dict {'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}. An **upstream** is a dict {'name', 'servers'}. A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtpath', 'keyval'}], 'locations'}. An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])}."
+  syskit_nginx_sites: "List of dict {'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}. An **upstream** is a dict {'name', 'servers'}. A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}. An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])}."
   syskit_nginx_autopurge: "Boolean. Purge nginx if no site is defined"
   syskit_ferm_rules: "List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent}"
-  syskit_users: "List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubpath', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
+  syskit_users: "List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
   syskit_root_pw_locked: "Boolean. If set, lock root password (recommended)"
   syskit_apt_proxy: "Dict {'http': {'hostname', ['directs']}, 'https': {'hostname', ['directs ']}}"
 include_when: {}
@@ -54,7 +54,7 @@ usage_complement: |
       * Lock/Unlock the root account — `syskit_root_pw_locked`
       * Configure Apt proxy — `syskit_apt_proxy`
 
-  **NOTICE:** All private keys `*.keyval` are expected to be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html) (or any equivalent.) Public assets (certificates `*.crtpath`, public keys `*.pubpath`) are expected to be files copied over.
+  **NOTICE:** All private keys `*.keyval` shall be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html) (or any equivalent.)
 
 maintenance_complement: |
   On [Galaxy](https://galaxy.ansible.com/accounts/profile), re-import the repository.

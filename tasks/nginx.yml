@@ -31,7 +31,7 @@
   - servers
   when: item.0.state == "present" and item.1.tls
   file:
-    src: "{{ item.1.tls.crtpath }}"
+    content: "{{ item.1.tls.crtval }}"
     dest: "/etc/ssl/certs/{{ item.1.name }}.crt"
     mode: "644"
     owner: root
