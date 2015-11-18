@@ -1,7 +1,7 @@
 ---
 - fail:
     msg: unsupported platform -- please contact the role maintainer for support
-  when: ansible_distribution not in ['Ubuntu', 'Debian']
+  when: ansible_distribution not in ['Debian']
 - include: apt.yml
   name: Taskfile apt.yml is included
   when: syskit_apt_proxy

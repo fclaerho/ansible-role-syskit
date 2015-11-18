@@ -10,12 +10,9 @@ galaxy_info:
   license: MIT
   min_ansible_version: 1.8.4
   platforms:
-  - name: Ubuntu
-    versions:
-    - all
   - name: Debian
     versions:
-    - all
+    - wheezy
 version: 0.1
 prefix: syskit_
 variables:

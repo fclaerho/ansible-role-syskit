@@ -7,7 +7,6 @@ System Integration Kit. Integrate services and tools by configuring system speci
 
 ## Supported Platforms
 
-  * Ubuntu
   * Debian
 
 ## Variables
