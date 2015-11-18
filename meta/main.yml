@@ -43,7 +43,8 @@ include_when:
   #ferm.yml: syskit_ferm_rules <- no, as we need to collapse ferm.d/ if there's no rule
   apt.yml: syskit_apt_proxy
 usage_complement: |
-  This role is registered on [Galaxy](https://galaxy.ansible.com/detail#/role/6063) as `fclaerho.syskit`.
+  This role is registered on [Galaxy](https://galaxy.ansible.com/detail#/role/6063)
+  with the ID `fclaerho.syskit`.
 
   The integration work is typically done at the playbook level:
   use 3rd-party roles to provision tools and services then

@@ -39,7 +39,8 @@ register its ID in the `dependencies` list of the role manifest `meta/main.yml`.
 For further details,
 please refer to the Ansible documentation at https://docs.ansible.com/playbooks_roles.html.
 
-This role is registered on [Galaxy](https://galaxy.ansible.com/detail#/role/6063) as `fclaerho.syskit`.
+This role is registered on [Galaxy](https://galaxy.ansible.com/detail#/role/6063)
+with the ID `fclaerho.syskit`.
 
 The integration work is typically done at the playbook level:
 use 3rd-party roles to provision tools and services then
