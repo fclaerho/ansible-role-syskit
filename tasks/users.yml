@@ -94,7 +94,7 @@
     state: item.1.state
 
 - name: Root account password is locked -- use an authorized user account for subsequent provisionings
-  when: syskit_root_pw_locked
+  when: syskit_root_pw_locked and ansible_ssh_user != 'root'
   command: passwd -l root
 
 - name: Root account password is unlocked
