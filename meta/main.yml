@@ -31,8 +31,7 @@ variables:
   syskit_apt_proxy: "Dict {'http': {'hostname', ['directs']}, 'https': {'hostname', ['directs ']}}"
 include_when: {}
 usage_complement: |
-  This role is registered on [Galaxy](https://galaxy.ansible.com/detail#/role/6063)
-  with the ID `fclaerho.syskit`.
+  This role is registered on Galaxy with the ID `fclaerho.syskit`.
 
   The integration work is typically done at the playbook level:
   use 3rd-party roles to provision tools and services then
