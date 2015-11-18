@@ -12,7 +12,10 @@ galaxy_info:
   platforms:
   - name: Debian
     versions:
-    - wheezy
+    - all
+  - name: Ubuntu
+    versions:
+    - all
 version: 0.1
 prefix: syskit_
 variables:
