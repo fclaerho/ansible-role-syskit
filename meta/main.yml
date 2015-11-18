@@ -5,7 +5,7 @@ galaxy_info:
   description: >
     System Integration Kit.
     Integrate services and tools by configuring system specific concerns
-    such as users, logging, services, proxying, firewalling and so on.
+    such as users, logging, services, reverse proxying, firewalling and so on.
     See the usage section for the exhaustive list of configurable concerns.
   license: MIT
   min_ansible_version: 1.8.4
@@ -42,14 +42,14 @@ usage_complement: |
 
     * **Reverse Proxying**: create/delete/update vhosts
       * [Nginx](http://nginx.org/en/) — `syskit_nginx_*`
-    * **Log Management**:
-      * Redirection: #TODO
-      * Rotation: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
     * **Firewalling**: create/delete/update rules
       * [Ferm](http://ferm.foo-projects.org) — `syskit_ferm_rules`
     * **Services**: create/delete/update manifests
       * [Upstart](http://upstart.ubuntu.com/cookbook/) — `syskit_upstart_manifests`
       * [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) — `syskit_sysv_manifests`
+    * **Logging**:
+      * Redirection: #TODO
+      * Rotation: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
     * **Users**: create/delete/update accounts — `syskit_users`
     * **Misc**:
       * Lock/Unlock the root account — `syskit_root_pw_locked`
