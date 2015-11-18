@@ -67,7 +67,7 @@
   with_items: syskit_nginx_sites
   when: item.state == "present"
   template:
-    src: site.j2
+    src: nginx.j2
     dest: "/etc/nginx/sites-available/{{ item.server.name }}"
     owner: www-data
     group: www-data

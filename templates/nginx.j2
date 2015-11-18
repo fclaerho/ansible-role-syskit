@@ -1,0 +1,55 @@
+# Vhost configuration for '{{ item.name }}'
+
+# "upstream" defines a WRR load-balanced cluster.
+# REF: http://nginx.org/en/docs/http/ngx_http_upstream_module.html#server
+{% for upstream in item.upstreams %}
+upstream {{ upstream.name }} {
+  {% for server in upstream.servers %}
+  server
+    {{ server.address }}:{{ server.port }}
+    {{ ('weight=' + server.weight) if server.weight else '' }}
+    {{ ('max_fails=' + server.max_fails) if server.max_fails else '' }}    
+    {{ ('fail_timeout=' + server.fail_timeout) if server.fail_timeout else '' }}
+    {{ 'down' if server.down else '' }}
+    {{ 'backup' if server.backup else '' }}
+    {{ ('max_conns=' + server.max_conns) if server.max_conns else '' }}
+    {{ 'resolve' if server.resolve else '' }}
+    {{ ('route=' + server.route) if server.route else '' }}
+    {{ ('slow_start=' + server.slow_start) if server.slow_start else '' }}
+    ;
+  {% endfor %}
+}
+{% endfor %}
+
+{% for server in item.servers %}
+server {
+  server_name          {{ server.name }};
+  merge_slashes        on
+
+  {% if server.tls %}
+  listen               {{ server.port }} ssl{{ ' default_server' if item.default else '' }};
+  ssl_protocols        TLSv1 TLSv1.1 TLSv1.2;
+  ssl_certificate      /etc/ssl/certs/{{ server.name }}.crt;
+  ssl_certificate_key  /etc/ssl/private/{{ server.name }}.key;
+  {% else %}
+  listen               {{ server.port }}{{ ' default_server' if item.default else '' }};
+  {% endif %}
+
+  {% for location in server.locations %}
+  location {{ location.uri|default('/') }} {
+  {% if location.root == 'root' %}
+    root               {{ location.root }}
+    autoindex          {{ location.autoindex|default('off') }}
+    {{ ('expires            ' + location.expires) if location.expires else '' }}
+  {% else %}
+    proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header   X-Forwarded-Proto https;
+    proxy_set_header   X-Real-IP $remote_addr;
+    proxy_set_header   Host $host;
+    proxy_redirect     default;
+    proxy_pass         {{ location.proxy_pass }};
+  {% endif %}
+  }
+  {% endfor %}
+}
+{% endfor %}

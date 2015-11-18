@@ -19,7 +19,8 @@ System Integration Kit. Integrate services and tools by configuring system speci
 | `syskit_logrotate_autopurge` | _default_ `False` | Boolean. Purge logrotate if no module is defined |
 | `syskit_logrotate_modules` | _default_ `[]` | List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'} |
 | `syskit_nginx_autopurge` | _default_ `True` | Boolean. Purge nginx if no site is defined |
-| `syskit_nginx_sites` | _default_ `[]` | List of dict {'state': present/absent, 'enabled': yes/no, 'upstream': {'name', 'address', 'port', ['timeout':4], 'protocol'}, 'server': {'name', ['port'], 'tls': [{'crtpath', 'keyval'}], ['default': no]} } |
+| `syskit_nginx_sites` | _default_ `[]` | List of dict {'state': present/absent, 'enabled': yes/no, 'servers', 'upstreams'}. A <server> is a dict {'name', 'port', ['default'], 'tls': [{'crtpath', 'keyval'}], 'locations'} An <upstream> is a dict {'name', 'servers'}. An upstream.<server> is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A server.<location> is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']), ('proxy_pass')}.
+ |
 | `syskit_root_pw_locked` | _default_ `False` | Boolean. If set, lock root password (recommended) |
 | `syskit_sysv_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'} |
 | `syskit_sysv_manifests_path` | _var_ `/etc/init.d` |  |
