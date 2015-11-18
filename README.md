@@ -68,7 +68,8 @@ Install [ansible-universe](https://github.com/fclaerho/ansible-universe)
 and run `ansible-universe check` to re-generate this distribution.
 
 The following files are generated or updated based on various role assets:
-  * tasks/main.yml
-  * README.md
+
+  * `tasks/main.yml`
+  * `README.md`
 
 
