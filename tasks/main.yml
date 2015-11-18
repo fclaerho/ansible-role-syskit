@@ -16,7 +16,7 @@
   when: true
 - include: rsyslog.yml
   name: Taskfile rsyslog.yml is included
-  when: syskit_rsyslog_forward is defined
+  when: true
 - include: sysv.yml
   name: Taskfile sysv.yml is included
   when: true
