@@ -19,8 +19,9 @@ System Integration Kit. Integrate services and tools by configuring system speci
 | `syskit_logrotate_autopurge` | _default_ `False` | Boolean. Purge logrotate if no module is defined |
 | `syskit_logrotate_modules` | _default_ `[]` | List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'} |
 | `syskit_nginx_autopurge` | _default_ `True` | Boolean. Purge nginx if no site is defined |
-| `syskit_nginx_sites` | _default_ `[]` | List of dict {'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}. An **upstream** is a dict {'name', 'servers'}. A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}. An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])}. |
+| `syskit_nginx_sites` | _default_ `[]` | List of dict {'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}. An **upstream** is a dict {'name', 'servers'}. A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}. An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])} |
 | `syskit_root_pw_locked` | _default_ `False` | Boolean. If set, lock root password (recommended) |
+| `syskit_rsyslog_forward` |   | Dict {'tcp': {'address', ['port']}, 'udp': {'address', ['port']}} |
 | `syskit_sysv_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'} |
 | `syskit_sysv_manifests_path` | _var_ `/etc/init.d` |  |
 | `syskit_upstart_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'} |
@@ -54,7 +55,7 @@ Configurable concerns:
     * [Upstart](http://upstart.ubuntu.com/cookbook/) — `syskit_upstart_manifests`
     * [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) — `syskit_sysv_manifests`
   * **Logging**:
-    * Redirection: #TODO
+    * Forwarding: [Rsyslog](http://www.rsyslog.com) — `syskit_rsyslog_forward`
     * Rotation: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
   * **Users**: create/delete/update accounts — `syskit_users`
   * **Misc**:

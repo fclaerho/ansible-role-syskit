@@ -19,17 +19,21 @@ galaxy_info:
 version: 0.1
 prefix: syskit_
 variables:
-  syskit_logrotate_modules: "List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'}"
   syskit_logrotate_autopurge: "Boolean. Purge logrotate if no module is defined"
+  syskit_logrotate_modules: "List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'}"
   syskit_upstart_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'}"
   syskit_sysv_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'}"
-  syskit_nginx_sites: "List of dict {'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}. An **upstream** is a dict {'name', 'servers'}. A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}. An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])}."
+  syskit_nginx_sites: "List of dict {'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}. An **upstream** is a dict {'name', 'servers'}. A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}. An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])}"
   syskit_nginx_autopurge: "Boolean. Purge nginx if no site is defined"
   syskit_ferm_rules: "List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent}"
   syskit_users: "List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
   syskit_root_pw_locked: "Boolean. If set, lock root password (recommended)"
   syskit_apt_proxy: "Dict {'http': {'hostname', ['directs']}, 'https': {'hostname', ['directs ']}}"
-include_when: {}
+  syskit_rsyslog_forward: "Dict {'tcp': {'address', ['port']}, 'udp': {'address', ['port']}}"
+
+include_when:
+  rsyslog.yml: syskit_rsyslog_forward is defined
+
 usage_complement: |
   This role is registered on Galaxy with the ID `fclaerho.syskit`.
 
@@ -47,7 +51,7 @@ usage_complement: |
       * [Upstart](http://upstart.ubuntu.com/cookbook/) — `syskit_upstart_manifests`
       * [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) — `syskit_sysv_manifests`
     * **Logging**:
-      * Redirection: #TODO
+      * Forwarding: [Rsyslog](http://www.rsyslog.com) — `syskit_rsyslog_forward`
       * Rotation: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
     * **Users**: create/delete/update accounts — `syskit_users`
     * **Misc**:

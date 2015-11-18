@@ -44,9 +44,7 @@
   args:
     removes: /etc/ferm.d
 
-#########
-# rules #
-#########
+################################################################################
 
 - name: Ferm rules are present
   with_items: syskit_ferm_rules

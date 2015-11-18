@@ -1,9 +1,5 @@
 ---
 
-############
-# packages #
-############ 
-
 # install nginx if any site is defined
 - name: Nginx package is present
   when: syskit_nginx_sites
@@ -21,9 +17,7 @@
     state: absent
     purge: yes
 
-################
-# certificates #
-################
+################################################################################
 
 - name: Nginx certs are present
   with_subelements:
@@ -67,9 +61,7 @@
     path: "/etc/ssl/private/{{ item.1.name }}.key"
     state: absent
 
-#########
-# sites #
-#########
+################################################################################
 
 - name: Nginx available sites are present
   with_items: syskit_nginx_sites
@@ -108,9 +100,7 @@
   notify:
   - syskit_reload_nginx
 
-###########
-# service #
-###########
+################################################################################
 
 - name: nginx service is started
   when: syskit_nginx_sites

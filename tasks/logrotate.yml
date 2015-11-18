@@ -1,9 +1,5 @@
 ---
 
-############
-# packages #
-############ 
-
 # install logrotate if any module is defined
 - name: Logrotate package is present
   when: syskit_logrotate_modules
@@ -21,9 +17,7 @@
     state: absent
     purge: yes
 
-###########
-# modules #
-###########
+################################################################################
 
 - name: Logrotate module directory is present
   file:

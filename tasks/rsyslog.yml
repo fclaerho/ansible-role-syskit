@@ -1,0 +1,11 @@
+---
+
+- name: Rsyslog forwarding configuration is present
+  template:
+    src: rsyslog.j2
+    dest: /etc/rsyslog.d/forward.conf
+    mode: "644"
+    owner: root
+    group: root
+  notify:
+  - syskit_reload_rsyslog

@@ -12,3 +12,8 @@
   service:
     name: nginx
     state: reloaded
+
+- name: syskit_reload_rsyslog
+  service:
+    name: rsyslog
+    state: reloaded
