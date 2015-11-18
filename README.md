@@ -1,7 +1,7 @@
 
 <!-- THIS IS A GENERATED FILE, DO NOT EDIT -->
 
-System Integration Kit. Integrate services and tools by configuring system specific concerns such as users, logging, services, reverse proxying, firewalling and so on. See the usage section for the exhaustive list of configurable concerns.
+System Integration Kit. Integrate services and tools by configuring system specific concerns such as users, logging, services, firewalling, reverse proxying and so on. See the usage section for the exhaustive list of configurable concerns.
  Version 0.1.
 
 
