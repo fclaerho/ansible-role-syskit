@@ -24,9 +24,9 @@ variables:
   syskit_upstart_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'}"
   syskit_sysv_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'}"
   syskit_nginx_sites: >
-    List of dict {'state': present/absent, 'enabled': yes/no, 'servers', 'upstreams'}.
-    A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtpath', 'keyval'}], 'locations'}
+    List of dict {'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}.
     An **upstream** is a dict {'name', 'servers'}.
+    A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtpath', 'keyval'}], 'locations'}
     An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}.
     A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']), ('proxy_pass')}.
   syskit_nginx_autopurge: "Boolean. Purge nginx if no site is defined"
