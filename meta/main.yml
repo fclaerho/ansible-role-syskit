@@ -27,7 +27,7 @@ variables:
     List of dict {'state': present/absent, 'enabled': yes/no, 'servers', 'upstreams'}.
     A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtpath', 'keyval'}], 'locations'}
     An **upstream** is a dict {'name', 'servers'}.
-    An upstream.**server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}.
+    An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}.
     A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']), ('proxy_pass')}.
   syskit_nginx_autopurge: "Boolean. Purge nginx if no site is defined"
   syskit_ferm_rules: "List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent}"
