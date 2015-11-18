@@ -49,14 +49,14 @@ Configurable concerns:
 
   * **Reverse Proxying**: create/delete/update vhosts
     * [Nginx](http://nginx.org/en/) — `syskit_nginx_*`
+  * **Log Management**:
+    * Forwarding: [Rsyslog](http://www.rsyslog.com) — `syskit_logforward`
+    * Rotation: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
   * **Firewalling**: create/delete/update rules
     * [Ferm](http://ferm.foo-projects.org) — `syskit_ferm_rules`
   * **Services**: create/delete/update manifests
     * [Upstart](http://upstart.ubuntu.com/cookbook/) — `syskit_upstart_manifests`
     * [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) — `syskit_sysv_manifests`
-  * **Log Management**:
-    * Forwarding: [Rsyslog](http://www.rsyslog.com) — `syskit_logforward`
-    * Rotation: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
   * **Users**: create/delete/update accounts — `syskit_users`
   * **Misc**:
     * Lock/Unlock the root account — `syskit_root_pw_locked`
