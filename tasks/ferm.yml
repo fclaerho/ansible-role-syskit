@@ -44,16 +44,11 @@
   args:
     removes: /etc/ferm.d
 
-# rules
+#########
+# rules #
+#########
 
-- name: Ferm modules are absent
-  with_items: syskit_ferm_rules
-  when: item.state == "absent"
-  file:
-    path: "/etc/ferm.d/{{ item.name }}"
-    state: absent
-
-- name: Ferm modules are present
+- name: Ferm rules are present
   with_items: syskit_ferm_rules
   when: item.state == "present"
   template:
@@ -63,3 +58,10 @@
     group: adm
     mode: "644"
   notify: syskit_reload_ferm
+
+- name: Ferm rules are absent
+  with_items: syskit_ferm_rules
+  when: item.state == "absent"
+  file:
+    path: "/etc/ferm.d/{{ item.name }}"
+    state: absent

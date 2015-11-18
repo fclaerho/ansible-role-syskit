@@ -4,7 +4,7 @@
   when: ansible_distribution not in ['Debian', 'Ubuntu']
 - include: apt.yml
   name: Taskfile apt.yml is included
-  when: syskit_apt_proxy
+  when: true
 - include: ferm.yml
   name: Taskfile ferm.yml is included
   when: true
@@ -16,10 +16,10 @@
   when: true
 - include: sysv.yml
   name: Taskfile sysv.yml is included
-  when: syskit_sysv_manifests
+  when: true
 - include: upstart.yml
   name: Taskfile upstart.yml is included
-  when: syskit_upstart_manifests
+  when: true
 - include: users.yml
   name: Taskfile users.yml is included
-  when: syskit_users
+  when: true

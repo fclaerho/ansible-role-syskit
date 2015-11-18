@@ -29,14 +29,7 @@ variables:
   syskit_users: "List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubpath', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
   syskit_root_pw_locked: "Boolean. If set, lock root password (recommended)"
   syskit_apt_proxy: "Dict {'http': {'hostname', ['directs']}, 'https': {'hostname', ['directs ']}}"
-include_when:
-  #logrotate.yml: syskit_logrotate_modules <- no, as we need to purge packages if autopurge is on
-  upstart.yml: syskit_upstart_manifests
-  #nginx.yml: syskit_nginx_sites <- no, as we need to purge packages if autopurge is on
-  users.yml: syskit_users
-  sysv.yml: syskit_sysv_manifests
-  #ferm.yml: syskit_ferm_rules <- no, as we need to collapse ferm.d/ if there's no rule
-  apt.yml: syskit_apt_proxy
+include_when: {}
 usage_complement: |
   This role is registered on [Galaxy](https://galaxy.ansible.com/detail#/role/6063)
   with the ID `fclaerho.syskit`.
@@ -63,5 +56,5 @@ usage_complement: |
 
   **NOTICE:** All private keys `*.keyval` are expected to be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html) (or any equivalent.) Public assets (certificates `*.crtpath`, public keys `*.pubpath`) are expected to be files copied over.
 
-maintenance_complement: >
+maintenance_complement: |
   On [Galaxy](https://galaxy.ansible.com/accounts/profile), re-import the repository.
