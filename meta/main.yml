@@ -5,7 +5,7 @@ galaxy_info:
   description: >
     System Integration Kit.
     Integrate services and tools by configuring system specific concerns
-    such as logs, users, services, firewalling, proxying and so on.
+    such as users, logging, services, proxying, firewalling and so on.
     See the usage section for the exhaustive list of configurable concerns.
   license: MIT
   min_ansible_version: 1.8.4
@@ -38,12 +38,14 @@ include_when:
   #ferm.yml: syskit_ferm_rules <- no, as we need to collapse ferm.d/ if there's no rule
   apt.yml: syskit_apt_proxy
 usage_complement: |
+  This role is registered on [Galaxy](https://galaxy.ansible.com/detail#/role/6063) as `fclaerho.syskit`.
+
   The integration work is typically done at the playbook level:
   use 3rd-party roles to provision tools and services then
   set `syskit_*` variables to configure the system concerns.
 
   Configurable concerns:
-  
+
     * **Reverse Proxying**: create/delete/update vhosts
       * [Nginx](http://nginx.org/en/) — `syskit_nginx_*`
     * **Log Management**:

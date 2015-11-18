@@ -1,7 +1,7 @@
 
 <!-- THIS IS A GENERATED FILE, DO NOT EDIT -->
 
-System Integration Kit. Integrate services and tools by configuring system specific concerns such as logs, users, services, firewalling, proxying and so on. See the usage section for the exhaustive list of configurable concerns.
+System Integration Kit. Integrate services and tools by configuring system specific concerns such as users, logging, services, proxying, firewalling and so on. See the usage section for the exhaustive list of configurable concerns.
  Version 0.1.
 
 
@@ -37,6 +37,8 @@ To add this role as another **role dependency**,
 register its ID in the `dependencies` list of the role manifest `meta/main.yml`.
 For further details,
 please refer to the Ansible documentation at https://docs.ansible.com/playbooks_roles.html.
+
+This role is registered on [Galaxy](https://galaxy.ansible.com/detail#/role/6063) as `fclaerho.syskit`.
 
 The integration work is typically done at the playbook level:
 use 3rd-party roles to provision tools and services then
