@@ -50,7 +50,8 @@ Configurable concerns:
   * **Reverse Proxying**: create/delete/update vhosts
     * [Nginx](http://nginx.org/en/) — `syskit_nginx_*`
   * **Log Management**:
-    * [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
+    * Redirection: #TODO
+    * Rotation: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
   * **Firewalling**: create/delete/update rules
     * [Ferm](http://ferm.foo-projects.org) — `syskit_ferm_rules`
   * **Services**: create/delete/update manifests
