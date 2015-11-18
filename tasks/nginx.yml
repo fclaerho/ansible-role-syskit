@@ -26,37 +26,45 @@
 ################
 
 - name: Nginx certs are present
-  with_items: syskit_nginx_sites
-  when: item.state == "present" and item.server.tls
+  with_subelements:
+  - syskit_nginx_sites
+  - servers
+  when: item.0.state == "present" and item.1.tls
   file:
-    src: "{{ item.crtpath }}"
-    dest: "/etc/ssl/certs/{{ item.server.name }}.crt"
+    src: "{{ item.1.tls.crtpath }}"
+    dest: "/etc/ssl/certs/{{ item.1.name }}.crt"
     mode: "644"
     owner: root
     group: root
 
 - name: Nginx certs are absent
-  with_items: syskit_nginx_sites
-  when: item.state == "absent" and item.server.tls
+  with_subelements:
+  - syskit_nginx_sites
+  - servers
+  when: item.0.state == "absent" and item.1.tls
   file:
-    path: "/etc/ssl/certs/{{ item.server.name }}.crt"
+    path: "/etc/ssl/certs/{{ item.1.name }}.crt"
     state: absent
 
 - name: Nginx keys are present
-  with_items: syskit_nginx_sites
-  when: item.state == "present" and item.server.tls
+  with_subelements:
+  - syskit_nginx_sites
+  - servers
+  when: item.0.state == "present" and item.1.tls
   file:
-    content: "{{ item.server.tls.keyval }}"
-    dest: "/etc/ssl/private/{{ item.server.name }}.key"
+    content: "{{ item.1.tls.keyval }}"
+    dest: "/etc/ssl/private/{{ item.1.name }}.key"
     mode: "640"
     owner: root
     group: ssl-cert
 
 - name: Nginx keys are absent
-  with_items: syskit_nginx_sites
-  when: item.state == "absent" and item.server.tls
+  with_subelements:
+  - syskit_nginx_sites
+  - servers
+  when: item.0.state == "absent" and item.1.tls
   file:
-    path: "/etc/ssl/private/{{ item.server.name }}.key"
+    path: "/etc/ssl/private/{{ item.1.name }}.key"
     state: absent
 
 #########
@@ -68,7 +76,7 @@
   when: item.state == "present"
   template:
     src: nginx.j2
-    dest: "/etc/nginx/sites-available/{{ item.server.name }}"
+    dest: "/etc/nginx/sites-available/{{ item.name }}"
     owner: www-data
     group: www-data
 
@@ -76,15 +84,15 @@
   with_items: syskit_nginx_sites
   when: item.state == "absent"
   file:
-    path: "/etc/nginx/sites-available/{{ item.server.name }}"
+    path: "/etc/nginx/sites-available/{{ item.name }}"
     state: absent
 
 - name: Nginx sites are enabled
   with_items: syskit_nginx_sites
   when: item.enabled
   file:
-    src: "/etc/nginx/sites-available/{{ item.server.name }}"
-    dest: "/etc/nginx/sites-enabled/{{ item.server.name }}"
+    src: "/etc/nginx/sites-available/{{ item.name }}"
+    dest: "/etc/nginx/sites-enabled/{{ item.name }}"
     state: link
     owner: www-data
     group: www-data
@@ -95,7 +103,7 @@
   with_items: syskit_nginx_sites
   when: not item.enabled
   file:
-    path: "/etc/nginx/sites-enabled/{{ item.server.name }}"
+    path: "/etc/nginx/sites-enabled/{{ item.name }}"
     state: absent
   notify:
   - syskit_reload_nginx

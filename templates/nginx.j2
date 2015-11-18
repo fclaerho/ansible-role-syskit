@@ -1,7 +1,7 @@
-# Vhost configuration for '{{ item.name }}'
 
 # "upstream" defines a WRR load-balanced cluster.
 # REF: http://nginx.org/en/docs/http/ngx_http_upstream_module.html#server
+{% set item.upstreams = [item.upstream] if item.upstream else item.upstreams %}
 {% for upstream in item.upstreams %}
 upstream {{ upstream.name }} {
   {% for server in upstream.servers %}
@@ -21,10 +21,10 @@ upstream {{ upstream.name }} {
 }
 {% endfor %}
 
+{% set item.servers = [item.server] if item.server else item.servers %}
 {% for server in item.servers %}
 server {
   server_name          {{ server.name }};
-  merge_slashes        on
 
   {% if server.tls %}
   listen               {{ server.port }} ssl{{ ' default_server' if item.default else '' }};
@@ -35,6 +35,9 @@ server {
   listen               {{ server.port }}{{ ' default_server' if item.default else '' }};
   {% endif %}
 
+  merge_slashes        on;
+
+  {% set server.locations = [server.location] if server.location else server.locations %}
   {% for location in server.locations %}
   location {{ location.uri|default('/') }} {
   {% if location.root == 'root' %}
@@ -48,6 +51,7 @@ server {
     proxy_set_header   Host $host;
     proxy_redirect     default;
     proxy_pass         {{ location.proxy_pass }};
+    {{ ('client_max_body_size ' + location.client_max_body_size) if location.client_max_body_size else ''}}
   {% endif %}
   }
   {% endfor %}
