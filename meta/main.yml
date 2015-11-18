@@ -43,6 +43,7 @@ usage_complement: |
   set `syskit_*` variables to configure the system concerns.
 
   Configurable concerns:
+  
     * **Reverse Proxying**: create/delete/update vhosts
       * [Nginx](http://nginx.org/en/) — `syskit_nginx_*`
     * **Log Management**:

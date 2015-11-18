@@ -43,6 +43,7 @@ use 3rd-party roles to provision tools and services then
 set `syskit_*` variables to configure the system concerns.
 
 Configurable concerns:
+
   * **Reverse Proxying**: create/delete/update vhosts
     * [Nginx](http://nginx.org/en/) — `syskit_nginx_*`
   * **Log Management**:
