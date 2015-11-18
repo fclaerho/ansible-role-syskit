@@ -25,10 +25,10 @@ variables:
   syskit_sysv_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'}"
   syskit_nginx_sites: >
     List of dict {'state': present/absent, 'enabled': yes/no, 'servers', 'upstreams'}.
-    A <server> is a dict {'name', 'port', ['default'], 'tls': [{'crtpath', 'keyval'}], 'locations'}
-    An <upstream> is a dict {'name', 'servers'}.
-    An upstream.<server> is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}.
-    A server.<location> is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']), ('proxy_pass')}.
+    A _server_ is a dict {'name', 'port', ['default'], 'tls': [{'crtpath', 'keyval'}], 'locations'}
+    An _upstream_ is a dict {'name', 'servers'}.
+    An _upstream.server_ is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}.
+    A _server.location_ is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']), ('proxy_pass')}.
   syskit_nginx_autopurge: "Boolean. Purge nginx if no site is defined"
   syskit_ferm_rules: "List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent}"
   syskit_users: "List of dict {'name', 'home', 'groups', 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubpath', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
