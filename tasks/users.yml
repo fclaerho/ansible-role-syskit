@@ -20,7 +20,7 @@
 
 - name: Managed users .ssh/ directories are present
   with_items: syskit_users
-  when: item.state == "present" and item.sshkeys
+  when: item.state == "present" and (item.sshkeys or item.authorized_keys)
   file:
     name: "{{ item.home|default(syskit_homedir + '/' + item.name) }}/.ssh"
     state: directory
@@ -31,7 +31,7 @@
 - name: Managed users private keys are present
   with_subelements:
   - syskit_users
-  - sshkeys
+  - sshkeys|default([])
   when: item.0.state == "present" and item.1.state == "present"
   copy:
     content: "{{ item.1.keyval }}"
@@ -43,7 +43,7 @@
 - name: Managed users private keys are absent
   with_subelements:
   - syskit_users
-  - sshkeys
+  - sshkeys|default([])
   when: item.0.state == "present" or item.1.state == "absent"
   file:
     path: "{{ item.0.home|default(syskit_homedir + '/' + item.0.name) }}/.ssh/{{ item.1.name }}"
@@ -52,7 +52,7 @@
 - name: Managed users public keys are present
   with_subelements:
   - syskit_users
-  - sshkeys
+  - sshkeys|default([])
   when: item.0.state == "present" and item.1.state == "present"
   copy:
     content: "{{ item.1.pubval }}"
@@ -64,7 +64,7 @@
 - name: Managed users public keys are absent
   with_subelements:
   - syskit_users
-  - sshkeys
+  - sshkeys|default([])
   when: item.0.state == "present" or item.1.state == "absent"
   file:
     path: "{{ item.0.home|default(syskit_homedir + '/' + item.0.name) }}/.ssh/{{ item.1.name }}.pub"
@@ -90,7 +90,7 @@
 - name: Managed users authorized keys are present/absent
   with_subelements:
   - syskit_users
-  - authorized_keys
+  - authorized_keys|default([])
   when: item.0.state == "present" or item.1.state == "absent"
   authorized_key:
     key: item.1.val
