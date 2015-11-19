@@ -15,7 +15,7 @@
     name: "{{ item.name }}"
     home: "{{ item.home|default(syskit_homedir + '/' + item.name) }}"
     state: "{{ item.state }}"
-    groups: "{{ item.groups|join(',') }}"
+    groups: "{{ item.groups|default([])|join(',') }}"
     remove: yes
 
 - name: Managed users .ssh/ directories are present
