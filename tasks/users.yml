@@ -4,18 +4,26 @@
   set_fact:
     syskit_homedir: "{{ syskit_users_basedir[ansible_os_family|lower] }}"
 
+- name: Managed users are present
+  with_items: syskit_users
+  when: item.state == "present"
+  user:
+    name: "{{ item.name }}"
+    home: "{{ item.home|default(syskit_homedir + '/' + item.name) }}"
+    state: present
+    groups: "{{ item.groups|default([])|join(',') }}"
+
 # deluser will segfault if LANG!=C
 # REF: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=660406
-- name: Managed users are present/absent
+- name: Managed users are absent
   with_items: syskit_users
+  when: item.state == "absent"
   environment:
     LANG: C
     LC_CTYPE: C
   user:
     name: "{{ item.name }}"
-    home: "{{ item.home|default(syskit_homedir + '/' + item.name) }}"
-    state: "{{ item.state }}"
-    groups: "{{ item.groups|default([])|join(',') }}"
+    state: absent
     remove: yes
 
 - name: Managed users .ssh/ directories are present
@@ -61,8 +69,8 @@
   copy:
     content: "{{ item.1.pubval }}"
     dest: "{{ item.0.home|default(syskit_homedir + '/' + item.0.name) }}/.ssh/{{ item.1.name }}.pub"
-    owner: jenkins
-    group: jenkins
+    owner: "{{ item.0.name }}"
+    group: "{{ item.0.name }}"
     mode: "644"
 
 - name: Managed users public keys are absent
