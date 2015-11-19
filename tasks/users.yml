@@ -9,9 +9,9 @@
   when: item.state == "present"
   user:
     name: "{{ item.name }}"
-    home: "{{ item.home|default(syskit_homedir + '/' + item.name) }}"
+    #home: "{{ item.home|default(syskit_homedir + '/' + item.name) }}"
     state: present
-    groups: "{{ item.groups|default([])|join(',') }}"
+    #groups: "{{ item.groups|default([])|join(',') }}"
 
 # deluser will segfault if LANG!=C
 # REF: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=660406
