@@ -1,5 +1,9 @@
 ---
 
+- name: Managed users facts are set
+  set_fact:
+    syskit_homedir: "{{ syskit_users_basedir[ansible_os_family|lower] }}"
+
 # deluser will segfault if LANG!=C
 # REF: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=660406
 - name: Managed users are present/absent
@@ -9,7 +13,7 @@
     LC_CTYPE: C
   user:
     name: "{{ item.name }}"
-    home: "{{ item.home }}"
+    home: "{{ item.home or (syskit_homedir + '/' + item.name) }}"
     state: "{{ item.state }}"
     groups: "{{ item.groups|join(',') }}"
     remove: yes
@@ -18,7 +22,7 @@
   with_items: syskit_users
   when: item.state == "present" and item.sshkeys
   file:
-    name: "{{ item.home }}/.ssh"
+    name: "{{ item.home or (syskit_homedir + '/' + item.name) }}/.ssh"
     state: directory
     owner: "{{ item.name }}"
     group: "{{ item.name }}"
@@ -31,7 +35,7 @@
   when: item.0.state == "present" and item.1.state == "present"
   copy:
     content: "{{ item.1.keyval }}"
-    dest: "{{ item.0.home }}/.ssh/{{ item.1.name }}"
+    dest: "{{ item.0.home or (syskit_homedir + '/' + item.0.name) }}/.ssh/{{ item.1.name }}"
     owner: "{{ item.0.name }}"
     group: "{{ item.0.name }}"
     mode: "600"
@@ -42,7 +46,7 @@
   - sshkeys
   when: item.0.state == "present" or item.1.state == "absent"
   file:
-    path: "{{ item.0.home }}/.ssh/{{ item.1.name }}"
+    path: "{{ item.0.home or (syskit_homedir + '/' + item.0.name) }}/.ssh/{{ item.1.name }}"
     state: absent
 
 - name: Managed users public keys are present
@@ -52,7 +56,7 @@
   when: item.0.state == "present" and item.1.state == "present"
   copy:
     content: "{{ item.1.pubval }}"
-    dest: "{{ item.0.home }}/.ssh/{{ item.1.name }}.pub"
+    dest: "{{ item.0.home or (syskit_homedir + '/' + item.0.name) }}/.ssh/{{ item.1.name }}.pub"
     owner: jenkins
     group: jenkins
     mode: "644"
@@ -63,7 +67,7 @@
   - sshkeys
   when: item.0.state == "present" or item.1.state == "absent"
   file:
-    path: "{{ item.0.home }}/.ssh/{{ item.1.name }}.pub"
+    path: "{{ item.0.home or (syskit_homedir + '/' + item.0.name) }}/.ssh/{{ item.1.name }}.pub"
     state: absent
 
 - name: Managed users sudoer conf is present
