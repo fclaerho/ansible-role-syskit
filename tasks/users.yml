@@ -4,26 +4,18 @@
   set_fact:
     syskit_homedir: "{{ syskit_users_basedir[ansible_os_family|lower] }}"
 
-- name: Managed users are present
-  with_items: syskit_users
-  when: item.state == "present"
-  user:
-    name: "{{ item.name }}"
-    #home: "{{ item.home|default(syskit_homedir + '/' + item.name) }}"
-    state: present
-    #groups: "{{ item.groups|default([])|join(',') }}"
-
 # deluser will segfault if LANG!=C
 # REF: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=660406
-- name: Managed users are absent
+- name: Managed users are present/absent
   with_items: syskit_users
-  when: item.state == "absent"
   environment:
     LANG: C
     LC_CTYPE: C
   user:
     name: "{{ item.name }}"
-    state: absent
+    #home: "{{ item.home|default(syskit_homedir + '/' + item.name) }}"
+    state: "{{ item.state }}"
+    #groups: "{{ item.groups|default([])|join(',') }}"
     remove: yes
 
 - name: Managed users .ssh/ directories are present
@@ -105,9 +97,9 @@
   - authorized_keys
   when: item.0.state == "present" or item.1.state == "absent"
   authorized_key:
-    key: item.1.val
-    user: item.0.name
-    state: item.1.state
+    key: "{{ item.1.val }}"
+    user: "{{ item.0.name }}"
+    state: "{{ item.1.state }}"
 
 - name: Root account password is locked -- use an authorized user account for subsequent provisionings
   when: syskit_root_pw_locked and ansible_ssh_user != 'root'
