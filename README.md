@@ -26,8 +26,8 @@ System Integration Kit. Integrate services and tools by configuring system speci
 | `syskit_sysv_manifests_path` | _var_ `/etc/init.d` |  |
 | `syskit_upstart_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'} |
 | `syskit_upstart_manifests_path` | _var_ `/etc/init` |  |
-| `syskit_users` | _default_ `[]` | List of dict {'name', ['home'], ['groups'], 'state': present/absent, 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…} |
-| `syskit_users_basedir` | _var_ `{'macosx': '/Users/', 'debian': '/home/', 'ubuntu': '/home/'}` |  |
+| `syskit_users` | _default_ `[]` | List of dict {'name', ['home'], ['shell': /bin/bash], 'state': present/absent, ['groups'], 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…} |
+| `syskit_users_basedir` | _var_ `{'macosx': '/Users', 'debian': '/home', 'ubuntu': '/home'}` |  |
 
 
 

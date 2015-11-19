@@ -2,6 +2,6 @@
 syskit_sysv_manifests_path: /etc/init.d
 syskit_upstart_manifests_path: /etc/init
 syskit_users_basedir:
-  macosx: "/Users/"
-  ubuntu: "/home/"
-  debian: "/home/"
+  macosx: "/Users"
+  ubuntu: "/home"
+  debian: "/home"

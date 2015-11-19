@@ -14,6 +14,7 @@
   user:
     name: "{{ item.name }}"
     #home: "{{ item.home|default(syskit_homedir + '/' + item.name) }}"
+    shell: "{{ item.shell or '/bin/bash' }}"
     state: "{{ item.state }}"
     #groups: "{{ item.groups|default([])|join(',') }}"
     remove: yes
