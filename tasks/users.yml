@@ -28,10 +28,14 @@
     group: "{{ item.name }}"
     mode: "700"
 
+# unfortunately, user.sshkeys must exists, otherwise we get the error:
+# "could not find 'sshkeys' key in iterated item…"
+# Not fix for now, REF: https://github.com/ansible/ansible/issues/9827
+
 - name: Managed users private keys are present
   with_subelements:
   - syskit_users
-  - sshkeys|default([])
+  - sshkeys
   when: item.0.state == "present" and item.1.state == "present"
   copy:
     content: "{{ item.1.keyval }}"
@@ -43,7 +47,7 @@
 - name: Managed users private keys are absent
   with_subelements:
   - syskit_users
-  - sshkeys|default([])
+  - sshkeys
   when: item.0.state == "present" or item.1.state == "absent"
   file:
     path: "{{ item.0.home|default(syskit_homedir + '/' + item.0.name) }}/.ssh/{{ item.1.name }}"
@@ -52,7 +56,7 @@
 - name: Managed users public keys are present
   with_subelements:
   - syskit_users
-  - sshkeys|default([])
+  - sshkeys
   when: item.0.state == "present" and item.1.state == "present"
   copy:
     content: "{{ item.1.pubval }}"
@@ -64,7 +68,7 @@
 - name: Managed users public keys are absent
   with_subelements:
   - syskit_users
-  - sshkeys|default([])
+  - sshkeys
   when: item.0.state == "present" or item.1.state == "absent"
   file:
     path: "{{ item.0.home|default(syskit_homedir + '/' + item.0.name) }}/.ssh/{{ item.1.name }}.pub"
@@ -90,7 +94,7 @@
 - name: Managed users authorized keys are present/absent
   with_subelements:
   - syskit_users
-  - authorized_keys|default([])
+  - authorized_keys
   when: item.0.state == "present" or item.1.state == "absent"
   authorized_key:
     key: item.1.val
