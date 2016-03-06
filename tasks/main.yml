@@ -1,28 +1,26 @@
 ---
-- fail:
-    msg: unsupported platform -- please contact the role maintainer for support
-  when: ansible_distribution not in ['Debian', 'Ubuntu']
+
 - include: apt.yml
   name: Taskfile apt.yml is included
-  when: true
+
 - include: ferm.yml
   name: Taskfile ferm.yml is included
-  when: true
+
 - include: logrotate.yml
   name: Taskfile logrotate.yml is included
-  when: true
+
 - include: nginx.yml
   name: Taskfile nginx.yml is included
-  when: true
+
 - include: rsyslog.yml
   name: Taskfile rsyslog.yml is included
-  when: true
+
 - include: sysv.yml
   name: Taskfile sysv.yml is included
-  when: true
+
 - include: upstart.yml
   name: Taskfile upstart.yml is included
-  when: true
+
 - include: users.yml
   name: Taskfile users.yml is included
-  when: true
+

@@ -47,7 +47,7 @@
 ################################################################################
 
 - name: Ferm rules are present
-  with_items: syskit_ferm_rules
+  with_items: "{{ syskit_ferm_rules }}"
   when: item.state == "present"
   template:
     src: ferm.j2
@@ -58,7 +58,7 @@
   notify: syskit_reload_ferm
 
 - name: Ferm rules are absent
-  with_items: syskit_ferm_rules
+  with_items: "{{ syskit_ferm_rules }}"
   when: item.state == "absent"
   file:
     path: "/etc/ferm.d/{{ item.name }}"

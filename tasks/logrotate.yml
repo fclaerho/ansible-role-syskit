@@ -9,7 +9,7 @@
     update_cache: yes
     cache_valid_time: 3600
 
-# purge nginx if no site is defined and autopurge is set
+# purge logrotate if no module is defined and autopurge is set
 - name: Logrotate package is absent
   when: not syskit_logrotate_modules and syskit_logrotate_autopurge
   apt:
@@ -20,6 +20,7 @@
 ################################################################################
 
 - name: Logrotate module directory is present
+  when: syskit_logrotate_modules
   file:
     path: /etc/logrotate.d
     state: directory
@@ -28,14 +29,14 @@
     mode: "755"
 
 - name: Logrotate modules are absent
-  with_items: syskit_logrotate_modules
+  with_items: "{{ syskit_logrotate_modules }}"
   when: item.state == "absent"
   file:
     path: "/etc/logrotate.d/{{ item.name }}"
     state: absent
 
 - name: Logrotate modules are present
-  with_items: syskit_logrotate_modules
+  with_items: "{{ syskit_logrotate_modules }}"
   when: item.state == "present"
   template:
     src: logrotate.j2

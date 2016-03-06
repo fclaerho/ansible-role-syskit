@@ -21,7 +21,7 @@
 
 - name: Nginx certs are present
   with_subelements:
-  - syskit_nginx_sites
+  - "{{ syskit_nginx_sites }}"
   - servers
   when: item.0.state == "present" and item.1.tls
   file:
@@ -33,7 +33,7 @@
 
 - name: Nginx certs are absent
   with_subelements:
-  - syskit_nginx_sites
+  - "{{ syskit_nginx_sites }}"
   - servers
   when: item.0.state == "absent" and item.1.tls
   file:
@@ -42,7 +42,7 @@
 
 - name: Nginx keys are present
   with_subelements:
-  - syskit_nginx_sites
+  - "{{ syskit_nginx_sites }}"
   - servers
   when: item.0.state == "present" and item.1.tls
   file:
@@ -54,7 +54,7 @@
 
 - name: Nginx keys are absent
   with_subelements:
-  - syskit_nginx_sites
+  - "{{ syskit_nginx_sites }}"
   - servers
   when: item.0.state == "absent" and item.1.tls
   file:
@@ -64,7 +64,7 @@
 ################################################################################
 
 - name: Nginx available sites are present
-  with_items: syskit_nginx_sites
+  with_items: "{{ syskit_nginx_sites }}"
   when: item.state == "present"
   template:
     src: nginx.j2
@@ -73,14 +73,14 @@
     group: www-data
 
 - name: Nginx available sites are absent
-  with_items: syskit_nginx_sites
+  with_items: "{{ syskit_nginx_sites }}"
   when: item.state == "absent"
   file:
     path: "/etc/nginx/sites-available/{{ item.name }}"
     state: absent
 
 - name: Nginx sites are enabled
-  with_items: syskit_nginx_sites
+  with_items: "{{ syskit_nginx_sites }}"
   when: item.enabled
   file:
     src: "/etc/nginx/sites-available/{{ item.name }}"
@@ -92,7 +92,7 @@
   - syskit_reload_nginx
 
 - name: Nginx sites are disabled
-  with_items: syskit_nginx_sites
+  with_items: "{{ syskit_nginx_sites }}"
   when: not item.enabled
   file:
     path: "/etc/nginx/sites-enabled/{{ item.name }}"

@@ -5,8 +5,7 @@ galaxy_info:
   description: >
     System Integration Kit.
     Integrate services and tools by configuring system specific concerns
-    such as users, services, firewalling, log management, reverse proxying and so on.
-    See the usage section for the exhaustive list of configurable concerns.
+    such as users, services, firewalling, log management, reverse proxying, etc.
   license: MIT
   min_ansible_version: 1.8.4
   platforms:
@@ -16,48 +15,3 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - all
-version: 0.1
-prefix: syskit_
-variables:
-  syskit_logrotate_autopurge: "Boolean. Purge logrotate if no module is defined"
-  syskit_logrotate_modules: "List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'}"
-  syskit_upstart_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'}"
-  syskit_sysv_manifests: "List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'}"
-  syskit_nginx_sites: "List of dict {'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}. An **upstream** is a dict {'name', 'servers'}. A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}. An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])}"
-  syskit_nginx_autopurge: "Boolean. Purge nginx if no site is defined"
-  syskit_ferm_rules: "List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent}"
-  syskit_users: "List of dict {'name', ['home'], ['shell': /bin/bash], 'state': present/absent, ['groups'], 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}"
-  syskit_root_pw_locked: "Boolean. If set, lock root password (recommended)"
-  syskit_apt_proxy: "Dict {'http': {'hostname', ['directs']}, 'https': {'hostname', ['directs ']}}"
-  syskit_logforward: "Dict {'tcp': {'address', ['port': 514]}, 'udp': {'address', ['port': 514]}}"
-
-include_when: {}
-
-usage_complement: |
-  This role is registered on Galaxy with the ID `fclaerho.syskit`.
-
-  The integration work is typically done at the playbook level:
-  use 3rd-party roles to provision tools and services then
-  set `syskit_*` variables to configure the system concerns.
-
-  Configurable concerns:
-
-    * **Reverse Proxying**: create/delete/update vhosts
-      * [Nginx](http://nginx.org/en/) — `syskit_nginx_*`
-    * **Log Management**:
-      * Forwarding: [Rsyslog](http://www.rsyslog.com) — `syskit_logforward`
-      * Rotation: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
-    * **Firewalling**: create/delete/update rules
-      * [Ferm](http://ferm.foo-projects.org) — `syskit_ferm_rules`
-    * **Services**: create/delete/update manifests
-      * [Upstart](http://upstart.ubuntu.com/cookbook/) — `syskit_upstart_manifests`
-      * [SysV](https://en.wikipedia.org/wiki/Init#SysV-style) — `syskit_sysv_manifests`
-    * **Users**: create/delete/update accounts — `syskit_users`
-    * **Misc**:
-      * Lock/Unlock the root account — `syskit_root_pw_locked`
-      * Configure Apt proxy — `syskit_apt_proxy`
-
-  **NOTICE:** All private keys `*.keyval` shall be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html) (or any equivalent.)
-
-maintenance_complement: |
-  On [Galaxy](https://galaxy.ansible.com/accounts/profile), re-import the repository.

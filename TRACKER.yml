@@ -1,0 +1,25 @@
+---
+
+OPENED:
+
+- id: 201603010659
+  task: refactoring -- factor in OS/X modules and system utility from $localhost
+  notes: rename system utility into scout
+
+- id: 201603010702
+  task: extend scout to manage logs -- list cat tail etc.
+
+- id: 201603061153
+  task: add launchd service management
+
+- id: 201603061154
+  task: add launchd manifest management
+
+CLOSED:
+
+- id: 201602201330
+  task: refactoring day
+  notes:
+  - cleanup .hmap files and factor out universe bits in meta manifest
+  - kinda fix Ansible 2 warnings
+  - kinda fix errors on OS/X (NOTICE: passwd -u doesn't mean the same thing at all!!!)

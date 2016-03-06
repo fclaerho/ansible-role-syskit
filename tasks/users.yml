@@ -2,12 +2,12 @@
 
 - name: Managed users facts are set
   set_fact:
-    syskit_homedir: "{{ syskit_users_basedir[ansible_os_family|lower] }}"
+    syskit_homedir: "{{ syskit_users_basedir[ansible_os_family] }}"
 
 # deluser will segfault if LANG!=C
 # REF: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=660406
 - name: Managed users are present/absent
-  with_items: syskit_users
+  with_items: "{{ syskit_users }}"
   environment:
     LANG: C
     LC_CTYPE: C
@@ -20,7 +20,7 @@
     remove: yes
 
 - name: Managed users .ssh/ directories are present
-  with_items: syskit_users
+  with_items: "{{ syskit_users }}"
   when: item.state == "present" and (item.sshkeys or item.authorized_keys)
   file:
     name: "{{ item.home|default(syskit_homedir + '/' + item.name) }}/.ssh"
@@ -31,11 +31,11 @@
 
 # unfortunately, user.sshkeys must exists, otherwise we get the error:
 # "could not find 'sshkeys' key in iterated item…"
-# Not fix for now, REF: https://github.com/ansible/ansible/issues/9827
+# No fix for now, REF: https://github.com/ansible/ansible/issues/9827
 
 - name: Managed users private keys are present
   with_subelements:
-  - syskit_users
+  - "{{ syskit_users }}"
   - sshkeys
   when: item.0.state == "present" and item.1.state == "present"
   copy:
@@ -47,7 +47,7 @@
 
 - name: Managed users private keys are absent
   with_subelements:
-  - syskit_users
+  - "{{ syskit_users }}"
   - sshkeys
   when: item.0.state == "present" or item.1.state == "absent"
   file:
@@ -56,7 +56,7 @@
 
 - name: Managed users public keys are present
   with_subelements:
-  - syskit_users
+  - "{{ syskit_users }}"
   - sshkeys
   when: item.0.state == "present" and item.1.state == "present"
   copy:
@@ -68,7 +68,7 @@
 
 - name: Managed users public keys are absent
   with_subelements:
-  - syskit_users
+  - "{{ syskit_users }}"
   - sshkeys
   when: item.0.state == "present" or item.1.state == "absent"
   file:
@@ -76,7 +76,7 @@
     state: absent
 
 - name: Managed users sudoer conf is present
-  with_items: syskit_users
+  with_items: "{{ syskit_users }}"
   when: item.state == "present" and item.sudoer
   template:
     src: sudoers.j2
@@ -86,7 +86,7 @@
     group: root
 
 - name: Managed users sudoer conf is absent
-  with_items: syskit_users
+  with_items: "{{ syskit_users }}"
   when: item.state == "absent" or not item.sudoer
   file:
     path: "/etc/sudoers.d/{{ item.name }}"
@@ -94,7 +94,7 @@
 
 - name: Managed users authorized keys are present/absent
   with_subelements:
-  - syskit_users
+  - "{{ syskit_users }}"
   - authorized_keys
   when: item.0.state == "present" or item.1.state == "absent"
   authorized_key:
@@ -102,10 +102,12 @@
     user: "{{ item.0.name }}"
     state: "{{ item.1.state }}"
 
-- name: Root account password is locked -- use an authorized user account for subsequent provisionings
-  when: syskit_root_pw_locked and ansible_ssh_user != 'root'
-  command: passwd -l root
+### FIX THIS FOR OS/X
 
-- name: Root account password is unlocked
-  when: not syskit_root_pw_locked
-  command: passwd -u root
+# - name: Root account password is locked -- use an authorized user account for subsequent provisionings
+#   when: syskit_root_pw_locked and ansible_ssh_user != 'root'
+#   command: passwd -l root
+
+# - name: Root account password is unlocked
+#   when: not syskit_root_pw_locked
+#   command: passwd -u root

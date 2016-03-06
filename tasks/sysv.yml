@@ -1,14 +1,14 @@
 ---
 
 - name: SysV service manifests are absent
-  with_items: syskit_sysv_manifests
+  with_items: "{{ syskit_sysv_manifests }}"
   when: item.state == "absent"
   file:
     path: "{{ syskit_sysv_manifests_path }}/{{ item.name }}"
     state: absent
 
 - name: SysV service manifests are present
-  with_items: syskit_sysv_manifests
+  with_items: "{{ syskit_sysv_manifests }}"
   when: item.state == "present"
   template:
     src: sysv.j2
