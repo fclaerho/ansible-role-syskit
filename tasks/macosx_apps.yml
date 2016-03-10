@@ -4,9 +4,9 @@
 
 - name: Application defaults are present
   with_items: "{{ syskit_macosx_apps }}"
-  when: item.state == "present" and item.defaults|default(True)
+  when: item.state == "present" and item.defaults
   copy:
-    src: "{{ item.domain }}.plist"
+    src: "{{ item.defaults }}"
     dest: ~/Library/Preferences/
 
 - name: Application is present
