@@ -2,9 +2,8 @@
 
 OPENED:
 
-- id: 201603010659
-  task: refactoring -- factor in OS/X modules and system utility from $localhost
-  notes: rename system utility into scout
+- id: 201603101930
+  task: refactoring -- factor in system utility from $localhost and rename into scout
 
 - id: 201603010702
   task: extend scout to manage logs -- list cat tail etc.
@@ -16,6 +15,9 @@ OPENED:
   task: add launchd manifest management
 
 CLOSED:
+
+- id: 201603010659
+  task: refactoring -- factor in OS/X modules and app tasks from $localhost
 
 - id: 201602201330
   task: refactoring day

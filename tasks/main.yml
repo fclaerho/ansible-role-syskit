@@ -1,26 +1,19 @@
 ---
 
 - include: apt.yml
-  name: Taskfile apt.yml is included
 
 - include: ferm.yml
-  name: Taskfile ferm.yml is included
 
 - include: logrotate.yml
-  name: Taskfile logrotate.yml is included
+
+- include: macosx_apps.yml
 
 - include: nginx.yml
-  name: Taskfile nginx.yml is included
 
 - include: rsyslog.yml
-  name: Taskfile rsyslog.yml is included
 
 - include: sysv.yml
-  name: Taskfile sysv.yml is included
 
 - include: upstart.yml
-  name: Taskfile upstart.yml is included
 
 - include: users.yml
-  name: Taskfile users.yml is included
-

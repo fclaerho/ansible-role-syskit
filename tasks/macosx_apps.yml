@@ -1,0 +1,57 @@
+---
+
+- debug:
+    var: macosx_app_name
+
+# app present
+
+- name: Application defaults are present
+  with_item: "{{ syskit_macosx_apps }}"
+  when: item.state == "present" and item.defaults|default(True)
+  copy:
+    src: "{{ item.domain }}.plist"
+    dest: ~/Library/Preferences/
+
+- name: Application is present
+  with_item: "{{ syskit_macosx_apps }}"
+  when: item.state == "present"
+  macosx_app:
+    name: "{{ item.name }}"
+    state: present
+
+# app absent
+
+- name: Application is absent
+  with_item: "{{ syskit_macosx_apps }}"
+  when: item.state == "absent"
+  macosx_app:
+    name: "{{ item.name }}"
+    state: absent
+
+- name: Application defaults are absent
+  with_item: "{{ syskit_macosx_apps }}"
+  when: item.state == "absent"
+  macosx_defaults:
+    domain: "{{ item.domain }}"
+    state: absent
+
+- name: Application support is absent
+  with_item: "{{ syskit_macosx_apps }}"
+  when: item.state == "absent"
+  file:
+    path: ~/Library/Application Support/{{ item.name }}
+    state: absent
+
+- name: Application container is absent
+  with_item: "{{ syskit_macosx_apps }}"
+  when: item.state == "absent"
+  file:
+    path: ~/Library/Containers/{{ item.domain }}
+    state: absent
+
+- name: Application package is absent
+  with_item: "{{ syskit_macosx_apps }}"
+  when: item.state == "absent"
+  macosx_pkg:
+    name: "{{ item.domain }}"
+    state: absent
