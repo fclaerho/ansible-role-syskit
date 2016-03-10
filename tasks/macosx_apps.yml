@@ -1,8 +1,5 @@
 ---
 
-- debug:
-    var: macosx_app_name
-
 # app present
 
 - name: Application defaults are present
