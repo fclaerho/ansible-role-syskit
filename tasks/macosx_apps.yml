@@ -26,10 +26,12 @@
     state: absent
 
 - name: Application defaults are absent
-  with_items: "{{ syskit_macosx_apps }}"
-  when: item.state == "absent"
+  with_subelements:
+  - "{{ syskit_macosx_apps }}"
+  - domains
+  when: item.0.state == "absent"
   macosx_defaults:
-    domain: "{{ item.domain }}"
+    domain: "{{ item.1 }}"
     state: absent
 
 - name: Application support is absent
