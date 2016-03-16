@@ -51,8 +51,10 @@
     state: absent
 
 - name: Application package is absent
-  with_items: "{{ syskit_macosx_apps }}"
-  when: item.state == "absent"
+  with_subelements:
+  - "{{ syskit_macosx_apps }}"
+  - domains
+  when: item.0.state == "absent"
   macosx_pkg:
-    name: "{{ item.domain }}"
+    name: "{{ item.1 }}"
     state: absent
