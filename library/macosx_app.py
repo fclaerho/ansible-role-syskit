@@ -73,7 +73,7 @@ class App(object):
 		path = self.get_path()
 		if path:
 			shutil.rmtree(path)
-			self.localdir.remove_if_empty()
+			self.localdir.delete_if_empty()
 			return True
 		else:
 			return False
