@@ -40,10 +40,12 @@
     state: absent
 
 - name: Application container is absent
-  with_items: "{{ syskit_macosx_apps }}"
-  when: item.state == "absent"
+  with_subelements:
+  - "{{ syskit_macosx_apps }}"
+  - domains
+  when: item.0.state == "absent"
   file:
-    path: ~/Library/Containers/{{ item.domain }}
+    path: ~/Library/Containers/{{ item.1 }}
     state: absent
 
 - name: Application package is absent

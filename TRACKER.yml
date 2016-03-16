@@ -16,6 +16,9 @@ OPENED:
 
 CLOSED:
 
+- id: 201603161902
+  task: fix macosx_apps to handle multiple domains per entry
+
 - id: 201603010659
   task: refactoring -- factor in OS/X modules and app tasks from $localhost
 
