@@ -63,7 +63,7 @@ class Defaults(object):
 		self.domain = domain
 
 	def exists(self):
-		return self.domain in self("defaults", "domains").split(", ")
+		return self.domain in self("defaults", "domains").strip().split(", ")
 
 	def create(self, path):
 		"import defaults from path if differing and return True, return False otherwise"

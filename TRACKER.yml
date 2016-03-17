@@ -28,3 +28,7 @@ CLOSED:
   - cleanup .hmap files and factor out universe bits in meta manifest
   - kinda fix Ansible 2 warnings
   - kinda fix errors on OS/X (NOTICE: passwd -u doesn't mean the same thing at all!!!)
+
+- id: 201603161918
+  bug: yes
+  task: fix macosx_defaults to purge org.videolan.vlc.LSSharedFileList and the additional dir org.videolan.vlc in ~/Library/Preferences
