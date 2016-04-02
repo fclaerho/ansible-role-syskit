@@ -20,7 +20,7 @@ CLOSED:
   bug: yes
   task: change (back) all .yaml extensions to .yml as Ansible fails otherwise
   error: this role does not appear to have a meta/main.yml file
-  command: find . -name \*.yaml | while read path; do mv $path $(dirname $path)/$(basename $path .yaml).yml; done
+  command: find . -name \*.yaml | while read path; do echo $path; mv $path $(dirname $path)/$(basename $path .yaml).yml; done
 
 - id: 201603161918
   bug: yes
