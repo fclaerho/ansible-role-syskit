@@ -66,7 +66,7 @@ Supported package managers:
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
-| DU | `syskit_apt_proxy` | _default_ `None` | Dict {'http': {'hostname', ['directs']}, 'https': {'hostname', ['directs ']}} |
+| DU | `syskit_apt_proxy` | `None` | Dict {'http': {'hostname', ['directs']}, 'https': {'hostname', ['directs ']}} |
 
 
 #### Log Management
@@ -76,9 +76,9 @@ Supported package managers:
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
-| DU | `syskit_logforward` | _default_ `{}` | Dict {'tcp': {'address', ['port': 514]}, 'udp': {'address', ['port': 514]}} |
-| DU | `syskit_logrotate_autopurge` | _default_ `False` | Boolean. Purge logrotate if no module is defined |
-| DU | `syskit_logrotate_modules` | _default_ `[]` | List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'} |
+| DU | `syskit_logforward` | `{}` | Dict {'tcp': {'address', ['port': 514]}, 'udp': {'address', ['port': 514]}} |
+| DU | `syskit_logrotate_autopurge` | `False` | Boolean. Purge logrotate if no module is defined |
+| DU | `syskit_logrotate_modules` | `[]` | List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'} |
 
 
 #### Firewalling
@@ -90,7 +90,7 @@ Supported frontends:
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
-| D | `syskit_ferm_rules` | _default_ `[]` | List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent} |
+| D | `syskit_ferm_rules` | `[]` | List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent} |
 
 
 #### Reverse Proxying
@@ -102,5 +102,5 @@ Supported servers:
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
-| DU | `syskit_nginx_autopurge` | _default_ `True` | Boolean. Purge nginx if no site is defined |
-| DU |`syskit_nginx_sites` | _default_ `[]` | List of dict {'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}. An **upstream** is a dict {'name', 'servers'}. A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}. An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])} |
+| DU | `syskit_nginx_autopurge` | `True` | Boolean. Purge nginx if no site is defined |
+| DU |`syskit_nginx_sites` | `[]` | List of dict {'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}. An **upstream** is a dict {'name', 'servers'}. A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}. An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])} |
