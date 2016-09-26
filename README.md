@@ -45,8 +45,9 @@ Create/delete/update accounts.
 
 Create/delete/update service manifests.
 
-[Upstart](http://upstart.ubuntu.com/cookbook/) — `syskit_upstart_manifests`
-[SysV](https://en.wikipedia.org/wiki/Init#SysV-style) — `syskit_sysv_manifests`
+Supported service managers:
+- [Upstart](http://upstart.ubuntu.com/cookbook/)
+- [SysV](https://en.wikipedia.org/wiki/Init#SysV-style)
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
@@ -63,7 +64,8 @@ Create/delete/update service manifests.
 
 ### Package Management
 
-Configure Apt proxy — `syskit_apt_proxy`.
+Supported package managers:
+- apt
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
@@ -84,7 +86,8 @@ Configure Apt proxy — `syskit_apt_proxy`.
 
 Create/delete/update rules.
 
-[Ferm](http://ferm.foo-projects.org) — `syskit_ferm_rules`
+Supported frontends:
+- [Ferm](http://ferm.foo-projects.org)
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
@@ -94,7 +97,8 @@ Create/delete/update rules.
 
 Ccreate/delete/update vhosts.
 
-[Nginx](http://nginx.org/en/)
+Supported:
+- [Nginx](http://nginx.org/en/)
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
