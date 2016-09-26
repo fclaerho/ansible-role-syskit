@@ -6,7 +6,8 @@ Deploy your services and applications then use syskit to configure system specif
 
 ### Usage
 
-This role is registered on Galaxy with the ID `fclaerho.syskit`.
+This role is registered on Galaxy with the ID `fclaerho.syskit`;
+You can alternatively use this repository URL as ID.
 
 - to use this role from a **playbook**, 
   add its ID to the project `requirements.{txt,yml}` file.
