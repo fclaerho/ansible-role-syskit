@@ -56,7 +56,7 @@ Install/purge applications.
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
-|  | `syskit_macosx_apps` | - | - |
+|  | `syskit_macosx_apps` | [] | List of dict {'state': present/absent, 'defaults': path} |
 
 
 #### Package Management
@@ -71,8 +71,8 @@ Supported package managers:
 
 #### Log Management
 
-- Forwarding: [Rsyslog](http://www.rsyslog.com) — `syskit_logforward`
-- Rotation: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
+- [Rsyslog](http://www.rsyslog.com)
+- [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html)
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
@@ -97,7 +97,7 @@ Supported frontends:
 
 Ccreate/delete/update vhosts.
 
-Supported:
+Supported servers:
 - [Nginx](http://nginx.org/en/)
 
 | Platform | Name | Default | Description |

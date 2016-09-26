@@ -5,8 +5,8 @@ syskit_upstart_manifests: []
 syskit_nginx_autopurge: no
 syskit_root_pw_locked: False
 syskit_sysv_manifests: []
-syskit_macosx_apps: {}
 syskit_nginx_sites: []
+syskit_macos_apps: {}
 syskit_logforward: {}
 syskit_ferm_rules: []
 syskit_apt_proxy: None
