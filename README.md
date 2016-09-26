@@ -1,10 +1,9 @@
 
+### Synopsis
+
 System integration kit — Integrate services and tools by configuring system specific concerns.
 
-* * *
-
-Usage
------
+### Usage
 
 This role is registered on Galaxy with the ID `fclaerho.syskit`.
 
@@ -28,10 +27,9 @@ Supported platforms:
 - : macOS
 - *: Any
 
-Concerns
---------
+### Concerns
 
-### Users
+#### Users
 
 Create/delete/update accounts.
 
@@ -41,7 +39,7 @@ Create/delete/update accounts.
 | DU | `syskit_root_pw_locked` | `False` | Boolean. If set, lock root password (recommended) |
 
 
-### Services
+#### Services
 
 Create/delete/update service manifests.
 
@@ -55,14 +53,16 @@ Supported service managers:
 | U | `syskit_upstart_manifests` | `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'} |
 
 
-### Applications
+#### Applications
+
+Install/purge applications.
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
 |  | `syskit_macosx_apps` | - | - |
 
 
-### Package Management
+#### Package Management
 
 Supported package managers:
 - apt
@@ -71,7 +71,8 @@ Supported package managers:
 |----------|------|---------|-------------|
 | DU | `syskit_apt_proxy` | _default_ `None` | Dict {'http': {'hostname', ['directs']}, 'https': {'hostname', ['directs ']}} |
 
-### Log Management
+
+#### Log Management
 
 - Forwarding: [Rsyslog](http://www.rsyslog.com) — `syskit_logforward`
 - Rotation: [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html) — `syskit_logrotate_*`
@@ -82,7 +83,8 @@ Supported package managers:
 | DU | `syskit_logrotate_autopurge` | _default_ `False` | Boolean. Purge logrotate if no module is defined |
 | DU | `syskit_logrotate_modules` | _default_ `[]` | List of dict {'name', 'path', 'size', 'state': present/absent, 'rotate'} |
 
-### Firewalling
+
+#### Firewalling
 
 Create/delete/update rules.
 
@@ -93,7 +95,8 @@ Supported frontends:
 |----------|------|---------|-------------|
 | D | `syskit_ferm_rules` | _default_ `[]` | List of dict {'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent} |
 
-### Reverse Proxying
+
+#### Reverse Proxying
 
 Ccreate/delete/update vhosts.
 
