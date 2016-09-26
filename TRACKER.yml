@@ -1,6 +1,11 @@
 ---
 
+###############################################################################
 OPENED:
+###############################################################################
+
+- id: 201609261709
+  task: decouple from ansible-universe for now
 
 - id: 201603101930
   task: refactoring -- factor in system utility from $localhost and rename into scout
@@ -14,7 +19,23 @@ OPENED:
 - id: 201603061154
   task: add launchd manifest management
 
+- id: 201602212158
+  task: add "state: latest" feature to macosx_app module with softwareupdate command
+  notes: also take this into account on make update?
+
+- id: 201601261949
+  task: macosx_app.install() not implemented.
+
+- id: 201601280620
+  task: macosx_defaults.delete() not implemented
+
+- id: 201601280621
+  task: macosx_pkg.install() not implemented
+
+
+###############################################################################
 CLOSED:
+###############################################################################
 
 - id: 201604021142
   bug: yes

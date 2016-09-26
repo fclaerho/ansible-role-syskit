@@ -59,9 +59,9 @@ options:
 
 EXAMPLES = """
 ---
-- macosx_app:
-    name: Sublime Text 2
-    state: absent
+- macosx_flags:
+    path: ~/Public
+    uchange: yes
 """
 
 import subprocess, json, sys, os
@@ -87,6 +87,8 @@ ALIASES = {
 	"hidden": (),
 }
 
+# from manpage:
+# Putting/removing the letters "no" before/from a keyword causes the flag to be cleared.
 def normalized(flags):
 	"normalize a list of flags"
 	result = []

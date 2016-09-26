@@ -2,10 +2,7 @@
 dependencies: []
 galaxy_info:
   author: Florent Claerhout <code@fclaerhout.fr>
-  description: >
-    System Integration Kit.
-    Integrate services and tools by configuring system specific concerns
-    such as users, services, firewalling, log management, reverse proxying, etc.
+  description: System integration kit
   license: MIT
   min_ansible_version: 1.8.4
   platforms:
