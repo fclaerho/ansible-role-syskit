@@ -1,7 +1,7 @@
 
 ### Synopsis
 
-System integration kit — Integrate services and tools by configuring system specific concerns.
+System integration kit — deploy your services and applications then use syskit to configure system specific concerns such as users, service manifest, logging, firewalling and so on.
 
 ### Usage
 
@@ -15,19 +15,15 @@ This role is registered on Galaxy with the ID `fclaerho.syskit`.
 For further details,
 please refer to the Ansible documentation at https://docs.ansible.com/playbooks_roles.html.
 
-The integration work is typically done at the playbook level:
-- use 3rd-party roles to provision tools and services
-- then set `syskit_*` variables to configure the system concerns.
-
 All private keys `*.keyval` should be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html) (or any equivalent.)
+
+### Concerns
 
 Supported platforms:
 - D: Debian
 - U: Ubuntu
 - : macOS
 - *: Any
-
-### Concerns
 
 #### Users
 
