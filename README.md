@@ -1,11 +1,14 @@
 
 
 System integration kit.
-Integrate services and tools by configuring system specific concerns.
+Integrate services and tools by configuring system specific concerns
+such as users, services, logging and other networking aspects.
 
 
 Usage
 -----
+
+This role is registered on Galaxy with the ID `fclaerho.syskit`.
 
 - To use this role from a **playbook**, 
   register its ID in the project `requirements.{txt,yml}` file.
@@ -14,8 +17,6 @@ Usage
 
 For further details,
 please refer to the Ansible documentation at https://docs.ansible.com/playbooks_roles.html.
-
-This role is registered on Galaxy with the ID `fclaerho.syskit`.
 
 The integration work is typically done at the playbook level:
 use 3rd-party roles to provision tools and services then
