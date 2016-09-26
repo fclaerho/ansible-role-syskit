@@ -1,0 +1,69 @@
+---
+
+# app present
+
+- name: Application defaults are present
+  with_items: "{{ syskit_macos_apps }}"
+  when: item.state == "present" and item.defaults
+  copy:
+    src: "{{ item.defaults }}"
+    dest: ~/Library/Preferences/
+
+- name: Application is present
+  with_items: "{{ syskit_macos_apps }}"
+  when: item.state == "present"
+  macos_app:
+    name: "{{ item.name }}"
+    state: present
+
+# app absent
+
+- name: Application is absent
+  with_items: "{{ syskit_macos_apps }}"
+  when: item.state == "absent"
+  macos_app:
+    name: "{{ item.name }}"
+    state: absent
+
+- name: Application defaults are absent
+  with_subelements:
+  - "{{ syskit_macos_apps }}"
+  - domains
+  when: item.0.state == "absent"
+  macos_defaults:
+    domain: "{{ item.1 }}"
+    state: absent
+
+- name: Application extra preferences are absent
+  with_subelements:
+  - "{{ syskit_macos_apps }}"
+  - domains
+  when: item.0.state == "absent"
+  file:
+    path: ~/Library/Preferences/{{ item.1 }}
+    state: absent
+
+- name: Application support is absent
+  with_items: "{{ syskit_macos_apps }}"
+  when: item.state == "absent"
+  file:
+    path: ~/Library/Application Support/{{ item.name }}
+    state: absent
+
+- name: Application container is absent
+  with_subelements:
+  - "{{ syskit_macos_apps }}"
+  - domains
+  when: item.0.state == "absent"
+  file:
+    path: ~/Library/Containers/{{ item.1 }}
+    state: absent
+
+- name: Application package is absent
+  with_subelements:
+  - "{{ syskit_macos_apps }}"
+  - domains
+  when: item.0.state == "absent"
+  macos_pkg:
+    name: "{{ item.1 }}"
+    state: absent
