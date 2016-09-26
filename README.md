@@ -1,7 +1,8 @@
 
 ### Synopsis
 
-System integration kit — deploy your services and applications then use syskit to configure system specific concerns such as users, service manifest, logging, firewalling and so on.
+Syskit — System integration kit.
+Deploy your services and applications then use syskit to configure system specific concerns such as users, service manifests, logging, proxying, firewalling and so on.
 
 ### Usage
 
