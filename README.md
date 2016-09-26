@@ -10,10 +10,10 @@ Usage
 
 This role is registered on Galaxy with the ID `fclaerho.syskit`.
 
-- To use this role from a **playbook**, 
-  register its ID in the project `requirements.{txt,yml}` file.
-- To add this role as another **role dependency**,
-  register its ID in the `dependencies` list of the role manifest `meta/main.yml`.
+- to use this role from a **playbook**, 
+  add its ID to the project `requirements.{txt,yml}` file.
+- to add this role as another **role dependency**,
+  add its ID in the `dependencies` list of the role manifest `meta/main.yml`.
 
 For further details,
 please refer to the Ansible documentation at https://docs.ansible.com/playbooks_roles.html.
