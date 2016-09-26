@@ -51,9 +51,7 @@ Create/delete/update service manifests.
 | Platform | Name | Value | Description |
 |----------|------|-------|-------------|
 | D | `syskit_sysv_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'} |
-| D | `syskit_sysv_manifests_path` | _var_ `/etc/init.d` |  |
 | U | `syskit_upstart_manifests` | _default_ `[]` | List of dict {'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'} |
-| U | `syskit_upstart_manifests_path` | _var_ `/etc/init` |  |
 
 
 ### Applications
