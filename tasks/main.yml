@@ -1,28 +1,11 @@
 ---
 
-- name: Apt tasks are included
-  include: apt.yml
-
-- name: Ferm tasks are included
-  include: ferm.yml
-
-- name: Logrotate tasks are included
-  include: logrotate.yml
-
-- name: Macosx_apps tasks are included
-  include: macosx_apps.yml
-
-- name: Nginx tasks are included
-  include: nginx.yml
-
-- name: Rsyslog tasks are included
-  include: rsyslog.yml
-
-- name: SysV tasks are included
-  include: sysv.yml
-
-- name: Upstart tasks are included
-  include: upstart.yml
-
-- name: Users tasks are included
-  include: users.yml
+- include: apt.yml
+- include: ferm.yml
+- include: logrotate.yml
+- include: macos_apps.yml
+- include: nginx.yml
+- include: rsyslog.yml
+- include: sysv.yml
+- include: upstart.yml
+- include: users.yml

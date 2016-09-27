@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # coding: utf-8
-# Copyright © 2016 fclaerhout.fr, released under the MIT license.
+# Copyright © 2016 fclaerhout.fr — released under the MIT license.
 # WANT_JSON
 
 DOCUMENTATION = """

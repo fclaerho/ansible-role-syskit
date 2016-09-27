@@ -4,20 +4,8 @@
 OPENED:
 ###############################################################################
 
-- id: 201609261709
-  task: decouple from ansible-universe for now
-
-- id: 201603101930
-  task: refactoring -- factor in system utility from $localhost and rename into scout
-
-- id: 201603010702
-  task: extend scout to manage logs -- list cat tail etc.
-
 - id: 201603061153
   task: add launchd service management
-
-- id: 201603061154
-  task: add launchd manifest management
 
 - id: 201602212158
   task: add "state: latest" feature to macosx_app module with softwareupdate command
@@ -36,6 +24,9 @@ OPENED:
 ###############################################################################
 CLOSED:
 ###############################################################################
+
+- id: 201609261709
+  task: decouple from ansible-universe for now
 
 - id: 201604021142
   bug: yes
