@@ -1,7 +1,7 @@
 
 ### Synopsis
 
-Syskit — Deploy your services and tools then let syskit handle the integration by configuring system specific concerns such as users, service manifests, logging, proxying, firewalling and so on.
+**Syskit** — Integrate your services and tools by configuring system specific concerns such as users, service management, logging and so on.
 
 ### Usage
 
