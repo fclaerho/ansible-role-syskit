@@ -56,7 +56,7 @@ Install/purge applications.
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
-|  | `syskit_macosx_apps` | [] | List of dict {'state': present/absent, 'defaults': path} |
+|  | `syskit_macosx_apps` | [] | List of dict {'name', 'state': present/absent, 'domains', 'defaults': path} |
 
 
 #### Package Management
