@@ -33,7 +33,7 @@ Create/delete/update accounts.
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
 | * | `syskit_users` | `[]` | List of dict {'name', ['home'], ['shell': /bin/bash], 'state': present/absent, ['groups'], 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…} |
-| DU | `syskit_root_pw_locked` | `False` | Boolean. If set, lock root password (recommended) |
+| DU | `syskit_root_pw_locked` | `false` | Boolean. If set, lock root password (recommended) |
 
 
 #### Services

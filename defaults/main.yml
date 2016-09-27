@@ -3,7 +3,7 @@ syskit_logrotate_autopurge: no
 syskit_logrotate_modules: []
 syskit_upstart_manifests: []
 syskit_nginx_autopurge: no
-syskit_root_pw_locked: False
+syskit_root_pw_locked: false
 syskit_sysv_manifests: []
 syskit_nginx_sites: []
 syskit_macos_apps: {}
