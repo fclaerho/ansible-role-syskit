@@ -2,7 +2,8 @@
 **Syskit** is an Ansible role designed to ease the integration of platform independent services and tools on specific platforms. It handles the configuration of system specific concerns such as users, service manifests, logging management and various networking aspects.
 
 You can use this role from a **playbook**,
-by adding its ID to the `requirements.{txt,yml}` file,
+by adding its ID to the `requirements.yml/txt` file
+and then calling `ansible-galaxy install -r requirements.yml/txt`,
 or you can use it as another **role dependency**,
 by adding its ID in the `dependencies` list of the role manifest `meta/main.yml`.
 For further details,
