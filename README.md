@@ -78,7 +78,7 @@ Tools:
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
 | DU | `syskit_nginx_autopurge` | `True` | Boolean. Purge nginx if no site is defined |
-| DU |`syskit_nginx_sites` | `[]` | List of dict `{'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}`. An **upstream** is a dict `{'name', 'servers'}`. A **server** is a dict `{'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}`. An **upstream.server** is a dict `{'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])}` |
+| DU |`syskit_nginx_sites` | `[]` | List of dict `{'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}`. An **upstream** is a dict `{'name', 'servers'}`. A **server** is a dict `{'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}`. An **upstream.server** is a dict `{'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}`. A **location** is a dict `{['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])}` |
 
 Tools:
 [Nginx](http://nginx.org/en/)
