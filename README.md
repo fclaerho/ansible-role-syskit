@@ -11,9 +11,9 @@ please refer to the Ansible documentation at https://docs.ansible.com/playbooks_
 The **stable version** of this role is registered on Galaxy with the ID `fclaerho.syskit`;
 you can alternatively use this repository URL as ID for the **development version**.
 
-All private keys `*.keyval` should be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html) (or any equivalent.)
+The following **platforms** are currently supported: Debian (D), Ubuntu (U) and macOS ().
 
-**Supported platforms** at the moment: Debian (D), Ubuntu (U) and macOS ().
+NOTICE! All private keys `*.keyval` should be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html) (or any equivalent.)
 
 
 #### Users
@@ -31,13 +31,14 @@ All private keys `*.keyval` should be securely stored via [Ansible-vault](http:/
 | D | `syskit_sysv_manifests` | `[]` | List of dict `{'uid', 'name', 'argv', 'state': present/absent, 'daemon', ['pidfile'], 'description'}` |
 | U | `syskit_upstart_manifests` | `[]` | List of dict `{'uid', 'name', 'argv', 'state': present/absent, 'daemon', 'description'}` |
 
+Ref:
 - [Upstart](http://upstart.ubuntu.com/cookbook/)
 - [SysV](https://en.wikipedia.org/wiki/Init#SysV-style)
 
 
 #### Applications
 
-On macOS, setting an application as `absent` will purge its configuration and any related package or container.
+NOTICE! On macOS, setting an application as `absent` will purge its configuration and any related package or container. Make sure to have a backup of your application defaults.
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
@@ -59,6 +60,7 @@ On macOS, setting an application as `absent` will purge its configuration and an
 | DU | `syskit_logrotate_autopurge` | `False` | Boolean. Purge logrotate if no module is defined |
 | DU | `syskit_logrotate_modules` | `[]` | List of dict `{'name', 'path', 'size', 'state': present/absent, 'rotate'}` |
 
+Ref:
 - [Rsyslog](http://www.rsyslog.com)
 - [Logrotate](http://www.linuxcommand.org/man_pages/logrotate8.html)
 
@@ -69,6 +71,7 @@ On macOS, setting an application as `absent` will purge its configuration and an
 |----------|------|---------|-------------|
 | D | `syskit_ferm_rules` | `[]` | List of dict `{'name', ['daddr'], ['proto'], ['dport'], 'state': present/absent}` |
 
+Ref:
 - [Ferm](http://ferm.foo-projects.org)
 
 
@@ -77,6 +80,7 @@ On macOS, setting an application as `absent` will purge its configuration and an
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
 | DU | `syskit_nginx_autopurge` | `True` | Boolean. Purge nginx if no site is defined |
-| DU |`syskit_nginx_sites` | `[]` | List of dict `{'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}. An **upstream** is a dict {'name', 'servers'}. A **server** is a dict {'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}. An **upstream.server** is a dict {'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])}` |
+| DU |`syskit_nginx_sites` | `[]` | List of dict `{'name', 'state': present/absent, 'enabled': yes/no, 'upstreams', 'servers'}`. An **upstream** is a dict `{'name', 'servers'}`. A **server** is a dict `{'name', 'port', ['default'], 'tls': [{'crtval', 'keyval'}], 'locations'}`. An **upstream.server** is a dict `{'address', 'port', ['weight'], ['max_fails'], ['fail_timeout'], ['backup'], ['down'], ['max_conns'], ['resolve'], ['route'], ['slow_start']}. A **location** is a dict {['uri'=/], ('root', ['autoindex'=off], ['expires']) or ('proxy_pass', ['client_max_body_size'])}` |
 
+Ref:
 - [Nginx](http://nginx.org/en/)
