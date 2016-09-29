@@ -18,7 +18,7 @@ NOTICE! All private keys `*.keyval` should be securely stored via [Ansible-vault
 
 | Platform | Name | Default | Description |
 |----------|------|---------|-------------|
-| – | `syskit_users` | `[]` | List of dict `{'name', ['home'], ['shell': /bin/bash], 'state': present/absent, ['groups'], 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}` |
+| DU | `syskit_users` | `[]` | List of dict `{'name', ['home'], ['shell': /bin/bash], 'state': present/absent, ['groups'], 'sudoer': yes/no, 'sshkeys': {'name', 'keyval', 'pubval', 'state': present/absent}…, 'authorized_keys': {'val', 'state': present/absent}…}` |
 | DU | `syskit_root_pw_locked` | `false` | Boolean. If set, lock root password (recommended) |
 
 
