@@ -1,0 +1,43 @@
+#!/bin/bash
+# Copyright © 2015 fclaerhout.fr -- released under the MIT license.
+
+set -euo pipefail
+
+print_usage() {
+	cat <<EOF
+System helper.
+
+Usage:
+  $(basename $0) [options]
+
+Options:
+  -p  list packages
+  -s  list services
+  -V  trace execution
+  -h  output this help message and exit
+EOF
+}
+
+packages() { pkgutil --packages | sort; }
+
+services() { launchctl list | awk 'NR > 2 {print $1 "\t" $3}' | sort -k2; }
+
+users() { false; }
+
+while getopts psuVh opt
+do
+	case $opt in
+		p)
+			packages;;
+		s)
+			services;;
+		V)
+			set -x;;
+		h)
+			print_usage
+			exit 0;;
+		*)
+			>&2 print_usage
+			exit 1;;
+	esac
+done

@@ -4,6 +4,9 @@
 OPENED:
 ###############################################################################
 
+- id: 201609291700
+  task: add syskit CLI helper
+
 - id: 201603061153
   task: add launchd service management
 
