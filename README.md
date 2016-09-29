@@ -1,5 +1,5 @@
 
-**Syskit** — System Integration Kit — is an Ansible role for integrating your services and tools by configuring system specific concerns such as users, service management, logging and various networking aspects.
+**Syskit** is an Ansible role design to ease the integration of platform independent services and tools on specific platforms. It handles the configuration of system specific concerns such as users, service manifests, logging management and various networking aspects.
 
 You can use this role from a **playbook**,
 by adding its ID to the `requirements.{txt,yml}` file,
