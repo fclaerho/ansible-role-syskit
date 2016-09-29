@@ -9,7 +9,7 @@ by adding its ID in the `dependencies` list of the role manifest `meta/main.yml`
 For further details,
 please refer to the Ansible documentation at https://docs.ansible.com/playbooks_roles.html.
 The **stable version** of this role is registered on Galaxy with the ID `fclaerho.syskit`;
-you can alternatively use this repository URL as ID (**development version**.)
+you can alternatively use this repository URL as ID for the **development version**.
 
 All private keys `*.keyval` should be securely stored via [Ansible-vault](http://docs.ansible.com/ansible/playbooks_vault.html) (or any equivalent.)
 
